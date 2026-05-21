@@ -355,9 +355,9 @@ export default function App() {
       {/* ── ОБО МНЕ ── */}
       <section className="px-4 py-16 bg-white">
         <div className="max-w-3xl mx-auto flex flex-col sm:flex-row gap-8 items-center">
-          <div className="w-24 h-24 rounded-full bg-blue-100 flex items-center justify-center text-4xl flex-shrink-0">
-            👋
-          </div>
+          <img src="/photo.jpg"
+            className="w-24 h-24 rounded-full object-cover flex-shrink-0"
+            alt="Photo" />
           <div>
             <h2 className="text-2xl font-bold mb-3">{c.about_title}</h2>
             <p className="text-gray-600 leading-relaxed mb-4">{c.about_text}</p>
