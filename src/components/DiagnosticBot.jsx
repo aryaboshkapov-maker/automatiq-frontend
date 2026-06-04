@@ -129,10 +129,10 @@ const QUESTIONS = [
     ru: "Сколько входящих запросов в день?",
     en: "How many incoming requests per day?",
     options: [
-      { v: "<5",   ru: "До 5 в день",  en: "Up to 5/day" },
-      { v: "5-20", ru: "5–20 в день",  en: "5–20/day" },
-      { v: "20-50",ru: "20–50 в день", en: "20–50/day" },
-      { v: "50+",  ru: "50+ в день",   en: "50+/day" },
+      { v: "<5",    ru: "До 5 в день",  en: "Up to 5/day" },
+      { v: "5-20",  ru: "5–20 в день",  en: "5–20/day" },
+      { v: "20-50", ru: "20–50 в день", en: "20–50/day" },
+      { v: "50+",   ru: "50+ в день",   en: "50+/day" },
     ],
   },
 ]
@@ -142,6 +142,7 @@ const SOL_ICONS = ["💬", "📅", "📊"]
 export default function DiagnosticBot({
   lang = "ru",
   apiBase = import.meta.env.VITE_API_BASE || "",
+  darkMode = false,
 }) {
   const [step, setStep] = useState(1)
   const [answers, setAnswers] = useState({})
@@ -245,19 +246,21 @@ export default function DiagnosticBot({
     setSubmitError("")
   }
 
+  const dm = darkMode
+
   return (
-    <div className="max-w-lg mx-auto p-4">
+    <div className="max-w-lg mx-auto p-5">
 
       {/* Прогресс-бар */}
-      <div className="h-1 bg-gray-200 rounded mb-2">
+      <div className={`h-0.5 rounded mb-2 ${dm ? "bg-white/10" : "bg-gray-200"}`}>
         <div
-          className="h-1 bg-blue-500 rounded transition-all duration-300"
+          className={`h-0.5 rounded transition-all duration-300 ${dm ? "bg-cyan-500" : "bg-blue-500"}`}
           style={{ width: `${progress}%` }}
         />
       </div>
 
       {/* Лейбл шага */}
-      <div className="text-xs text-gray-500 mb-4">
+      <div className={`text-xs mb-4 ${dm ? "text-gray-500" : "text-gray-500"}`}>
         {phase === "thinking"
           ? thinkingText
           : phase === "result"
@@ -268,11 +271,11 @@ export default function DiagnosticBot({
       {/* ФАЗА: ВОПРОСЫ */}
       {phase === "questions" && (
         <div>
-          <h2 className="text-base font-semibold text-gray-900 mb-2">
+          <h2 className={`text-base font-semibold mb-2 ${dm ? "text-white" : "text-gray-900"}`}>
             {QUESTIONS[step - 1][lang]}
           </h2>
           {QUESTIONS[step - 1][`hint_${lang}`] && (
-            <p className="text-xs text-gray-500 mb-3">
+            <p className={`text-xs mb-3 ${dm ? "text-gray-500" : "text-gray-500"}`}>
               {QUESTIONS[step - 1][`hint_${lang}`]}
             </p>
           )}
@@ -281,11 +284,14 @@ export default function DiagnosticBot({
               <button
                 key={opt.v}
                 onClick={() => handleSelect(QUESTIONS[step - 1].id, opt.v)}
-                className={`px-3 py-2 text-sm border rounded-lg text-left
-                  transition-all cursor-pointer
+                className={`px-3 py-2 text-sm border rounded-lg text-left transition-all cursor-pointer
                   ${answers[QUESTIONS[step - 1].id] === opt.v
-                    ? "bg-blue-50 border-blue-400 text-blue-700 font-medium"
-                    : "border-gray-200 text-gray-700 hover:border-gray-300 hover:bg-gray-50"
+                    ? dm
+                      ? "bg-cyan-500/20 border-cyan-500/50 text-cyan-400 font-medium"
+                      : "bg-blue-50 border-blue-400 text-blue-700 font-medium"
+                    : dm
+                      ? "border-white/10 text-gray-300 hover:border-white/25 hover:bg-white/5"
+                      : "border-gray-200 text-gray-700 hover:border-gray-300 hover:bg-gray-50"
                   }`}
               >
                 {opt[lang]}
@@ -297,12 +303,12 @@ export default function DiagnosticBot({
 
       {/* ФАЗА: THINKING */}
       {phase === "thinking" && (
-        <div className="flex items-center gap-3 py-8 text-gray-500 text-sm">
+        <div className={`flex items-center gap-3 py-8 text-sm ${dm ? "text-gray-400" : "text-gray-500"}`}>
           <div className="flex gap-1">
             {[0, 1, 2].map((i) => (
               <div
                 key={i}
-                className="w-2 h-2 rounded-full bg-gray-400 animate-bounce"
+                className={`w-2 h-2 rounded-full animate-bounce ${dm ? "bg-cyan-500/60" : "bg-gray-400"}`}
                 style={{ animationDelay: `${i * 0.15}s` }}
               />
             ))}
@@ -315,39 +321,41 @@ export default function DiagnosticBot({
       {phase === "result" && (
         <div>
 
-          {/* Карточка диагноза */}
+          {/* Диагноз */}
           {result?.problem && (
-            <div className="border border-gray-200 rounded-xl p-4 mb-3">
-              <span className="inline-block text-xs font-semibold px-2 py-1 rounded bg-amber-100 text-amber-800 mb-2">
+            <div className={`border rounded-xl p-4 mb-3 ${dm ? "border-white/10 bg-white/5" : "border-gray-200"}`}>
+              <span className={`inline-block text-xs font-semibold px-2 py-1 rounded mb-2 ${dm ? "bg-amber-500/20 text-amber-400" : "bg-amber-100 text-amber-800"}`}>
                 {t.diagnosis_label}
               </span>
-              <p className="text-sm text-gray-600 leading-relaxed">
+              <p className={`text-sm leading-relaxed ${dm ? "text-gray-300" : "text-gray-600"}`}>
                 {result.problem}
               </p>
             </div>
           )}
 
-          {/* Три карточки решений */}
+          {/* Решения */}
           {(result?.solutions || []).map((sol, i) => (
             <div
               key={i}
               className={`border rounded-xl p-4 mb-3
-                ${i === 0 ? "border-blue-300 bg-blue-50/30" : "border-gray-200"}`}
+                ${i === 0
+                  ? dm ? "border-cyan-500/30 bg-cyan-500/5" : "border-blue-300 bg-blue-50/30"
+                  : dm ? "border-white/10 bg-white/5" : "border-gray-200"}`}
             >
-              <span className="inline-block text-xs font-semibold px-2 py-1 rounded bg-blue-100 text-blue-800 mb-2">
+              <span className={`inline-block text-xs font-semibold px-2 py-1 rounded mb-2 ${dm ? "bg-cyan-500/20 text-cyan-400" : "bg-blue-100 text-blue-800"}`}>
                 {t.solution_label} {i + 1} {SOL_ICONS[i]}
               </span>
-              <h3 className="text-sm font-semibold text-gray-900 mb-2">
+              <h3 className={`text-sm font-semibold mb-2 ${dm ? "text-white" : "text-gray-900"}`}>
                 {sol.title}
               </h3>
-              <p className="text-sm text-gray-600 leading-relaxed mb-3">
+              <p className={`text-sm leading-relaxed mb-3 ${dm ? "text-gray-400" : "text-gray-600"}`}>
                 {sol.description}
               </p>
               {sol.steps?.length > 0 && (
                 <ol className="space-y-1.5 mb-3">
                   {sol.steps.map((s, j) => (
-                    <li key={j} className="flex gap-2 text-sm text-gray-600">
-                      <span className="flex-shrink-0 w-5 h-5 rounded-full bg-blue-100 text-blue-700 text-xs font-bold flex items-center justify-center mt-0.5">
+                    <li key={j} className={`flex gap-2 text-sm ${dm ? "text-gray-400" : "text-gray-600"}`}>
+                      <span className={`flex-shrink-0 w-5 h-5 rounded-full text-xs font-bold flex items-center justify-center mt-0.5 ${dm ? "bg-cyan-500/20 text-cyan-400" : "bg-blue-100 text-blue-700"}`}>
                         {j + 1}
                       </span>
                       <span>{s}</span>
@@ -356,97 +364,105 @@ export default function DiagnosticBot({
                 </ol>
               )}
               {sol.benefit && (
-                <div className="bg-green-50 rounded-lg px-3 py-2 text-xs text-green-700 leading-relaxed">
+                <div className={`rounded-lg px-3 py-2 text-xs leading-relaxed ${dm ? "bg-green-500/10 text-green-400" : "bg-green-50 text-green-700"}`}>
                   📈 {sol.benefit}
                 </div>
               )}
             </div>
           ))}
 
-          {/* Карточка итога */}
+          {/* Итог */}
           {result && (
-            <div className="border border-gray-200 rounded-xl p-4 mb-3">
-              <span className="inline-block text-xs font-semibold px-2 py-1 rounded bg-green-100 text-green-800 mb-3">
+            <div className={`border rounded-xl p-4 mb-3 ${dm ? "border-white/10 bg-white/5" : "border-gray-200"}`}>
+              <span className={`inline-block text-xs font-semibold px-2 py-1 rounded mb-3 ${dm ? "bg-green-500/20 text-green-400" : "bg-green-100 text-green-800"}`}>
                 {t.summary_label}
               </span>
               <div className="grid grid-cols-2 gap-3 mb-3">
-                <div className="bg-gray-50 rounded-lg p-3 text-center">
-                  <div className="text-lg font-bold text-gray-900">
+                <div className={`rounded-lg p-3 text-center ${dm ? "bg-white/5" : "bg-gray-50"}`}>
+                  <div className={`text-lg font-bold ${dm ? "text-white" : "text-gray-900"}`}>
                     {result.total_hours}
                   </div>
-                  <div className="text-xs text-gray-500 mt-1">
+                  <div className={`text-xs mt-1 ${dm ? "text-gray-500" : "text-gray-500"}`}>
                     {t.hours_label}
                   </div>
                 </div>
-                <div className="bg-gray-50 rounded-lg p-3 text-center">
-                  <div className="text-lg font-bold text-gray-900">
+                <div className={`rounded-lg p-3 text-center ${dm ? "bg-white/5" : "bg-gray-50"}`}>
+                  <div className={`text-lg font-bold ${dm ? "text-white" : "text-gray-900"}`}>
                     {result.total_money}
                   </div>
-                  <div className="text-xs text-gray-500 mt-1">
+                  <div className={`text-xs mt-1 ${dm ? "text-gray-500" : "text-gray-500"}`}>
                     {t.money_label}
                   </div>
                 </div>
               </div>
               {result.kit_digital && (
-                <div className="bg-gray-100 rounded-lg px-3 py-2 text-xs text-gray-600 leading-relaxed">
+                <div className={`rounded-lg px-3 py-2 text-xs leading-relaxed ${dm ? "bg-white/5 text-gray-400" : "bg-gray-100 text-gray-600"}`}>
                   {t.kit_label} {result.kit_digital}
                 </div>
               )}
               {isFallback && (
-                <p className="text-xs text-gray-400 mt-2">{t.fallback_note}</p>
+                <p className="text-xs text-gray-600 mt-2">{t.fallback_note}</p>
               )}
             </div>
           )}
 
-          {/* ФОРМА ЛИДА */}
+          {/* Форма лида */}
           {!leadSent ? (
-            <div className="bg-gray-50 rounded-xl p-4 mt-2 border border-gray-200">
-              <h3 className="text-sm font-semibold text-gray-900 mb-1">
+            <div className={`rounded-xl p-4 mt-2 border ${dm ? "bg-white/5 border-white/10" : "bg-gray-50 border-gray-200"}`}>
+              <h3 className={`text-sm font-semibold mb-1 ${dm ? "text-white" : "text-gray-900"}`}>
                 {t.lead_title}
               </h3>
-              <p className="text-xs text-gray-500 mb-4">{t.lead_sub}</p>
+              <p className={`text-xs mb-4 ${dm ? "text-gray-500" : "text-gray-500"}`}>{t.lead_sub}</p>
               <form onSubmit={handleSubmit} className="space-y-3">
 
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">
+                  <label className={`block text-xs font-medium mb-1 ${dm ? "text-gray-400" : "text-gray-600"}`}>
                     {t.field_name}
                   </label>
                   <input
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-100"
+                    className={`w-full border rounded-lg px-3 py-2 text-sm outline-none transition-colors
+                      ${dm
+                        ? "bg-white/5 border-white/15 text-white placeholder:text-gray-600 focus:border-cyan-500/50"
+                        : "border-gray-300 focus:border-blue-400 focus:ring-1 focus:ring-blue-100"}`}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">
+                  <label className={`block text-xs font-medium mb-1 ${dm ? "text-gray-400" : "text-gray-600"}`}>
                     {t.field_contact}
                   </label>
                   <input
                     type="text"
                     value={contact}
                     onChange={(e) => setContact(e.target.value)}
-                    placeholder="+34 ..."
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-100"
+                    placeholder="+..."
+                    className={`w-full border rounded-lg px-3 py-2 text-sm outline-none transition-colors
+                      ${dm
+                        ? "bg-white/5 border-white/15 text-white placeholder:text-gray-600 focus:border-cyan-500/50"
+                        : "border-gray-300 focus:border-blue-400 focus:ring-1 focus:ring-blue-100"}`}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">
+                  <label className={`block text-xs font-medium mb-1 ${dm ? "text-gray-400" : "text-gray-600"}`}>
                     {t.field_business}
                   </label>
                   <input
                     type="text"
                     value={business}
                     onChange={(e) => setBusiness(e.target.value)}
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-100"
+                    className={`w-full border rounded-lg px-3 py-2 text-sm outline-none transition-colors
+                      ${dm
+                        ? "bg-white/5 border-white/15 text-white placeholder:text-gray-600 focus:border-cyan-500/50"
+                        : "border-gray-300 focus:border-blue-400 focus:ring-1 focus:ring-blue-100"}`}
                   />
                 </div>
 
-                {/* Поле своей идеи */}
-                <div className="border-2 border-dashed border-blue-200 rounded-xl p-3 bg-blue-50/40">
-                  <label className="block text-xs font-medium text-blue-700 mb-1">
+                <div className={`border-2 border-dashed rounded-xl p-3 ${dm ? "border-cyan-500/20 bg-cyan-500/5" : "border-blue-200 bg-blue-50/40"}`}>
+                  <label className={`block text-xs font-medium mb-1 ${dm ? "text-cyan-400" : "text-blue-700"}`}>
                     {t.field_idea_label}
                   </label>
                   <textarea
@@ -454,35 +470,41 @@ export default function DiagnosticBot({
                     onChange={(e) => setCustomIdea(e.target.value)}
                     placeholder={t.field_idea_placeholder}
                     rows={3}
-                    className="w-full border border-blue-200 rounded-lg px-3 py-2 text-sm outline-none bg-white focus:border-blue-400 focus:ring-1 focus:ring-blue-100 resize-vertical"
+                    className={`w-full border rounded-lg px-3 py-2 text-sm outline-none resize-vertical transition-colors
+                      ${dm
+                        ? "bg-white/5 border-white/10 text-white placeholder:text-gray-600 focus:border-cyan-500/50"
+                        : "border-blue-200 bg-white focus:border-blue-400 focus:ring-1 focus:ring-blue-100"}`}
                   />
-                  <p className="text-xs text-blue-500 mt-1">{t.field_idea_hint}</p>
+                  <p className={`text-xs mt-1 ${dm ? "text-cyan-500/70" : "text-blue-500"}`}>{t.field_idea_hint}</p>
                 </div>
 
                 {submitError && (
-                  <p className="text-xs text-red-500">{submitError}</p>
+                  <p className="text-xs text-red-400">{submitError}</p>
                 )}
 
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold text-sm py-2.5 rounded-lg transition-colors"
+                  className={`w-full font-semibold text-sm py-2.5 rounded-lg transition-colors
+                    ${dm
+                      ? "bg-cyan-500 hover:bg-cyan-400 disabled:bg-cyan-800 text-black"
+                      : "bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white"}`}
                 >
                   {isSubmitting ? t.submitting : t.submit_btn}
                 </button>
               </form>
             </div>
           ) : (
-            <div className="bg-green-50 border border-green-200 rounded-xl p-6 text-center mt-2">
+            <div className={`border rounded-xl p-6 text-center mt-2 ${dm ? "bg-green-500/10 border-green-500/20" : "bg-green-50 border-green-200"}`}>
               <div className="text-2xl mb-2">✅</div>
-              <h3 className="font-semibold text-gray-900 mb-1">{t.thanks_title}</h3>
-              <p className="text-sm text-gray-600">{t.thanks_sub}</p>
+              <h3 className={`font-semibold mb-1 ${dm ? "text-white" : "text-gray-900"}`}>{t.thanks_title}</h3>
+              <p className={`text-sm ${dm ? "text-gray-400" : "text-gray-600"}`}>{t.thanks_sub}</p>
             </div>
           )}
 
           <button
             onClick={restart}
-            className="w-full mt-3 text-xs text-gray-400 hover:text-gray-600 py-2 transition-colors"
+            className={`w-full mt-3 text-xs py-2 transition-colors ${dm ? "text-gray-600 hover:text-gray-400" : "text-gray-400 hover:text-gray-600"}`}
           >
             {t.restart}
           </button>
