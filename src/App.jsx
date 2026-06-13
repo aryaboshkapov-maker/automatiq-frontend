@@ -70,6 +70,10 @@ const CONTENT = {
     grants_title: "Автоматизация — это не дорого",
     grants_text: "Большинство решений окупаются за 1–2 месяца за счёт сэкономленного времени и сокращения потерь. Для малого бизнеса в Торревьехе и регионе — рассчитаем ROI конкретно под вас, бесплатно.",
     grants_cta: "Рассчитать окупаемость →",
+    demo_title: "Нажмите — попробуйте прямо сейчас",
+    demo_sub: "Живой AI-чат для автосалона Best Cars Torrevieja",
+    demo_try_tg: "Попробовать Telegram",
+    demo_try_wa: "Попробовать WhatsApp",
     diag_title: "Узнайте за 5 минут что можно автоматизировать",
     diag_sub: "Бесплатная диагностика — три конкретных решения для вашего бизнеса",
     cases_title: "Примеры результатов",
@@ -153,6 +157,10 @@ const CONTENT = {
     grants_title: "Automation pays for itself",
     grants_text: "Most solutions pay back in 1–2 months through saved time and reduced losses. For small businesses in Torrevieja and the region — we calculate the ROI specifically for you, free of charge.",
     grants_cta: "Calculate your ROI →",
+    demo_title: "Click — try it right now",
+    demo_sub: "Live AI chat for Best Cars Torrevieja dealership",
+    demo_try_tg: "Try Telegram demo",
+    demo_try_wa: "Try WhatsApp demo",
     diag_title: "Find out in 5 minutes what you can automate",
     diag_sub: "Free diagnosis — three concrete solutions for your business",
     cases_title: "Results",
@@ -237,15 +245,89 @@ export default function App() {
               {c.hero_cta2}
             </button>
           </div>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center mt-4">
-            <a href="/demo-telegram"
-              className="flex items-center justify-center gap-2 bg-sky-500/15 border border-sky-500/30 text-sky-400 px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-sky-500/25 transition-colors">
-              🤖 Demo Telegram
+        </div>
+      </section>
+
+      {/* ── ДЕМО ── */}
+      <section className="px-4 py-16 bg-[#060612]">
+        <div className="max-w-3xl mx-auto text-center">
+          <p className="text-xs text-gray-500 uppercase tracking-widest mb-2">Live demo</p>
+          <h2 className="text-2xl font-bold mb-2 text-white">{c.demo_title}</h2>
+          <p className="text-gray-500 text-sm mb-12">{c.demo_sub}</p>
+          <div className="grid sm:grid-cols-2 gap-12 max-w-sm mx-auto sm:max-w-none">
+
+            {/* Telegram */}
+            <a href="/demo-telegram" className="group flex flex-col items-center gap-5">
+              <div className="w-52 rounded-[2.4rem] border-[5px] border-gray-700 bg-gray-900 overflow-hidden shadow-2xl shadow-sky-500/10 group-hover:shadow-sky-500/30 group-hover:scale-105 transition-all duration-300">
+                <div className="bg-gray-900 h-6 flex justify-center items-end pb-1">
+                  <div className="w-16 h-3.5 bg-gray-800 rounded-full" />
+                </div>
+                <div className="bg-[#2AABEE] px-3 py-2 flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-full bg-[#1a7ab5] flex items-center justify-center text-base flex-shrink-0">🚗</div>
+                  <div className="text-left">
+                    <div className="text-white text-[11px] font-semibold leading-tight">Best Cars Torrevieja</div>
+                    <div className="text-blue-100 text-[9px]">bot</div>
+                  </div>
+                </div>
+                <div className="bg-[#1c2b3a] px-2.5 pt-3 pb-2 space-y-2" style={{minHeight: 170}}>
+                  <div className="bg-[#182533] rounded-xl rounded-tl-sm px-2.5 py-2 text-[10px] text-gray-300 leading-relaxed max-w-[88%]">
+                    Hola! 👋 Soy el asistente de Best Cars Torrevieja. ¿En qué puedo ayudarte?
+                  </div>
+                  <div className="flex gap-1 flex-wrap">
+                    {["Comprar coche", "Alquilar", "Transfer"].map(s => (
+                      <span key={s} className="border border-[#2AABEE]/70 text-[#2AABEE] text-[8px] px-2 py-0.5 rounded-full">{s}</span>
+                    ))}
+                  </div>
+                </div>
+                <div className="bg-[#1c1c1e] px-2.5 py-2 flex items-center gap-2 border-t border-gray-700/40">
+                  <div className="flex-1 bg-gray-700/40 rounded-full h-5" />
+                  <span className="text-[#2AABEE] text-sm">➤</span>
+                </div>
+                <div className="bg-[#1c1c1e] py-2 flex justify-center">
+                  <div className="w-20 h-1 bg-gray-600 rounded-full" />
+                </div>
+              </div>
+              <div className="inline-flex items-center gap-2 bg-sky-500/15 border border-sky-500/30 text-sky-400 px-5 py-2.5 rounded-xl text-sm font-semibold group-hover:bg-sky-500/25 transition-colors">
+                🤖 {c.demo_try_tg}
+              </div>
             </a>
-            <a href="/demo-whatsapp"
-              className="flex items-center justify-center gap-2 bg-green-500/15 border border-green-500/30 text-green-400 px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-green-500/25 transition-colors">
-              💬 Demo WhatsApp
+
+            {/* WhatsApp */}
+            <a href="/demo-whatsapp" className="group flex flex-col items-center gap-5">
+              <div className="w-52 rounded-[2.4rem] border-[5px] border-gray-700 bg-gray-900 overflow-hidden shadow-2xl shadow-green-500/10 group-hover:shadow-green-500/30 group-hover:scale-105 transition-all duration-300">
+                <div className="bg-gray-900 h-6 flex justify-center items-end pb-1">
+                  <div className="w-16 h-3.5 bg-gray-800 rounded-full" />
+                </div>
+                <div className="bg-[#075E54] px-3 py-2 flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-full bg-[#128C7E] flex items-center justify-center text-base flex-shrink-0">🚗</div>
+                  <div className="text-left">
+                    <div className="text-white text-[11px] font-semibold leading-tight">Best Cars Torrevieja</div>
+                    <div className="text-green-100 text-[9px]">online</div>
+                  </div>
+                </div>
+                <div className="bg-[#efeae2] px-2.5 pt-3 pb-2 space-y-2" style={{minHeight: 170}}>
+                  <div className="bg-white rounded-xl rounded-tl-sm px-2.5 py-2 text-[10px] text-gray-700 leading-relaxed max-w-[88%] shadow-sm">
+                    Hola! 👋 Soy el asistente de Best Cars Torrevieja. ¿En qué puedo ayudarte?
+                  </div>
+                  <div className="flex gap-1 flex-wrap">
+                    {["Comprar coche", "Alquilar", "Transfer"].map(s => (
+                      <span key={s} className="border border-[#25d366] text-[#075E54] text-[8px] px-2 py-0.5 rounded-full bg-white/80">{s}</span>
+                    ))}
+                  </div>
+                </div>
+                <div className="bg-[#1f2c34] px-2.5 py-2 flex items-center gap-2 border-t border-gray-600/40">
+                  <div className="flex-1 bg-gray-600/40 rounded-full h-5" />
+                  <span className="text-[#25d366] text-sm">➤</span>
+                </div>
+                <div className="bg-[#1f2c34] py-2 flex justify-center">
+                  <div className="w-20 h-1 bg-gray-500 rounded-full" />
+                </div>
+              </div>
+              <div className="inline-flex items-center gap-2 bg-green-500/15 border border-green-500/30 text-green-400 px-5 py-2.5 rounded-xl text-sm font-semibold group-hover:bg-green-500/25 transition-colors">
+                💬 {c.demo_try_wa}
+              </div>
             </a>
+
           </div>
         </div>
       </section>
