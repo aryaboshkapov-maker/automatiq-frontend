@@ -237,6 +237,16 @@ export default function App() {
               {c.hero_cta2}
             </button>
           </div>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center mt-4">
+            <a href="/demo-telegram"
+              className="flex items-center justify-center gap-2 bg-sky-500/15 border border-sky-500/30 text-sky-400 px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-sky-500/25 transition-colors">
+              🤖 Demo Telegram
+            </a>
+            <a href="/demo-whatsapp"
+              className="flex items-center justify-center gap-2 bg-green-500/15 border border-green-500/30 text-green-400 px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-green-500/25 transition-colors">
+              💬 Demo WhatsApp
+            </a>
+          </div>
         </div>
       </section>
 
