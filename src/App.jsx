@@ -368,50 +368,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* ── ПАКЕТЫ ── */}
-      <section className="px-4 py-16 bg-[#0a0a1a]">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold text-center mb-10">{c.packages_title}</h2>
-          <div className="grid sm:grid-cols-3 gap-5">
-            {c.packages.map((pkg, i) => (
-              <div key={i} className={`border rounded-xl p-5 relative flex flex-col transition-all
-                ${pkg.highlight
-                  ? "border-cyan-500/40 bg-cyan-500/5 shadow-lg shadow-cyan-500/10"
-                  : "border-white/10 bg-white/5"}`}>
-                {pkg.badge && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-cyan-500 text-black text-xs font-bold px-3 py-1 rounded-full">
-                    {pkg.badge}
-                  </div>
-                )}
-                <div className="mb-4">
-                  <div className="font-bold text-lg mb-1 text-white">{pkg.name}</div>
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-2xl font-bold text-cyan-400">{pkg.price}</span>
-                    <span className="text-sm text-gray-500">{pkg.period}</span>
-                  </div>
-                  <p className="text-sm text-gray-400 mt-1">{pkg.desc}</p>
-                </div>
-                <ul className="space-y-2 mb-5 flex-1">
-                  {pkg.features.map((f, j) => (
-                    <li key={j} className="flex gap-2 text-sm text-gray-300">
-                      <span className="text-cyan-400 flex-shrink-0">✓</span>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <button onClick={() => scrollTo("diagnosis")}
-                  className={`w-full py-2 rounded-lg text-sm font-semibold transition-colors
-                    ${pkg.highlight
-                      ? "bg-cyan-500 text-black hover:bg-cyan-400"
-                      : "border border-white/15 text-gray-300 hover:border-white/30 hover:text-white"}`}>
-                  {pkg.cta}
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── ГРАНТЫ ЕС ── */}
       <section className="px-4 py-14 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-violet-900/50 to-cyan-900/40" />
