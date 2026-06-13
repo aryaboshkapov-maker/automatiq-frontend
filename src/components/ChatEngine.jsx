@@ -69,11 +69,13 @@ export default function ChatEngine({ channel = "web", apiBase, theme }) {
         }),
       })
       const data = await res.json()
-      setHistory([...newHistory, { role: "assistant", content: data.text }])
+      const historyText = data.text
+      const displayText = data.text.replace(/\n?\[(?:BOOKING|MEETING)_SAVED:#\w+\]/g, "")
+      setHistory([...newHistory, { role: "assistant", content: historyText }])
       const cars = data.images || []
       setMessages(prev => [...prev, {
         role: "assistant",
-        text: data.text,
+        text: displayText,
         time: now(),
         suggestions: data.suggestions || [],
         images: cars,
