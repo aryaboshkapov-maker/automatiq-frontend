@@ -71,9 +71,11 @@ const CONTENT = {
     grants_text: "Большинство решений окупаются за 1–2 месяца за счёт сэкономленного времени и сокращения потерь. Для малого бизнеса в Торревьехе и регионе — рассчитаем ROI конкретно под вас, бесплатно.",
     grants_cta: "Рассчитать окупаемость →",
     demo_title: "Нажмите — попробуйте прямо сейчас",
-    demo_sub: "Живой AI-чат для автосалона Best Cars Torrevieja",
+    demo_sub: "Живой AI-чат для автосалона Torrevieja Cars",
     demo_try_tg: "Попробовать Telegram",
     demo_try_wa: "Попробовать WhatsApp",
+    demo_bot_msg: "Привет! 👋 Я ассистент Torrevieja Cars. Чем могу помочь?",
+    demo_suggestions: ["Купить авто", "Арендовать", "Трансфер"],
     diag_title: "Узнайте за 5 минут что можно автоматизировать",
     diag_sub: "Бесплатная диагностика — три конкретных решения для вашего бизнеса",
     cases_title: "Примеры результатов",
@@ -158,9 +160,11 @@ const CONTENT = {
     grants_text: "Most solutions pay back in 1–2 months through saved time and reduced losses. For small businesses in Torrevieja and the region — we calculate the ROI specifically for you, free of charge.",
     grants_cta: "Calculate your ROI →",
     demo_title: "Click — try it right now",
-    demo_sub: "Live AI chat for Best Cars Torrevieja dealership",
+    demo_sub: "Live AI chat for Torrevieja Cars dealership",
     demo_try_tg: "Try Telegram demo",
     demo_try_wa: "Try WhatsApp demo",
+    demo_bot_msg: "Hi! 👋 I'm the Torrevieja Cars assistant. How can I help?",
+    demo_suggestions: ["Buy a car", "Rent a car", "Transfer"],
     diag_title: "Find out in 5 minutes what you can automate",
     diag_sub: "Free diagnosis — three concrete solutions for your business",
     cases_title: "Results",
@@ -265,16 +269,16 @@ export default function App() {
                 <div className="bg-[#2AABEE] px-3 py-2 flex items-center gap-2">
                   <div className="w-8 h-8 rounded-full bg-[#1a7ab5] flex items-center justify-center text-base flex-shrink-0">🚗</div>
                   <div className="text-left">
-                    <div className="text-white text-[11px] font-semibold leading-tight">Best Cars Torrevieja</div>
+                    <div className="text-white text-[11px] font-semibold leading-tight">Torrevieja Cars</div>
                     <div className="text-blue-100 text-[9px]">bot</div>
                   </div>
                 </div>
                 <div className="bg-[#1c2b3a] px-2.5 pt-3 pb-2 space-y-2" style={{minHeight: 170}}>
                   <div className="bg-[#182533] rounded-xl rounded-tl-sm px-2.5 py-2 text-[10px] text-gray-300 leading-relaxed max-w-[88%]">
-                    Hola! 👋 Soy el asistente de Best Cars Torrevieja. ¿En qué puedo ayudarte?
+                    {c.demo_bot_msg}
                   </div>
                   <div className="flex gap-1 flex-wrap">
-                    {["Comprar coche", "Alquilar", "Transfer"].map(s => (
+                    {c.demo_suggestions.map(s => (
                       <span key={s} className="border border-[#2AABEE]/70 text-[#2AABEE] text-[8px] px-2 py-0.5 rounded-full">{s}</span>
                     ))}
                   </div>
@@ -301,16 +305,16 @@ export default function App() {
                 <div className="bg-[#075E54] px-3 py-2 flex items-center gap-2">
                   <div className="w-8 h-8 rounded-full bg-[#128C7E] flex items-center justify-center text-base flex-shrink-0">🚗</div>
                   <div className="text-left">
-                    <div className="text-white text-[11px] font-semibold leading-tight">Best Cars Torrevieja</div>
+                    <div className="text-white text-[11px] font-semibold leading-tight">Torrevieja Cars</div>
                     <div className="text-green-100 text-[9px]">online</div>
                   </div>
                 </div>
                 <div className="bg-[#efeae2] px-2.5 pt-3 pb-2 space-y-2" style={{minHeight: 170}}>
                   <div className="bg-white rounded-xl rounded-tl-sm px-2.5 py-2 text-[10px] text-gray-700 leading-relaxed max-w-[88%] shadow-sm">
-                    Hola! 👋 Soy el asistente de Best Cars Torrevieja. ¿En qué puedo ayudarte?
+                    {c.demo_bot_msg}
                   </div>
                   <div className="flex gap-1 flex-wrap">
-                    {["Comprar coche", "Alquilar", "Transfer"].map(s => (
+                    {c.demo_suggestions.map(s => (
                       <span key={s} className="border border-[#25d366] text-[#075E54] text-[8px] px-2 py-0.5 rounded-full bg-white/80">{s}</span>
                     ))}
                   </div>

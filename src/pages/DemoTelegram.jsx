@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react"
 import IPhoneMockup from "../components/IPhoneMockup"
 import ChatEngine from "../components/ChatEngine"
 
@@ -34,7 +35,7 @@ function TelegramHeader() {
         fontSize: 18, flexShrink: 0,
       }}>🚗</div>
       <div style={{ flex: 1 }}>
-        <div style={{ color: "#fff", fontWeight: 600, fontSize: 14 }}>Best Cars Torrevieja</div>
+        <div style={{ color: "#fff", fontWeight: 600, fontSize: 14 }}>Torrevieja Cars</div>
         <div style={{ color: "rgba(255,255,255,0.75)", fontSize: 11 }}>bot</div>
       </div>
       <span style={{ color: "#fff", fontSize: 18, marginRight: 8, cursor: "pointer" }}>←</span>
@@ -44,6 +45,21 @@ function TelegramHeader() {
 }
 
 export default function DemoTelegram() {
+  const [scale, setScale] = useState(1)
+
+  useEffect(() => {
+    const update = () => {
+      const available = window.innerWidth - 32
+      setScale(Math.min(1, available / 410))
+    }
+    update()
+    window.addEventListener("resize", update)
+    return () => window.removeEventListener("resize", update)
+  }, [])
+
+  const phoneH = 844
+  const heightOffset = scale < 1 ? (phoneH * (scale - 1)) : 0
+
   return (
     <div style={{
       minHeight: "100vh",
@@ -52,20 +68,28 @@ export default function DemoTelegram() {
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
-      padding: "40px 20px",
+      padding: "40px 16px",
       gap: 24,
     }}>
-      <h1 style={{ color: "#fff", fontSize: 20, fontWeight: 700, margin: 0, textAlign: "center" }}>
-        Best Cars Torrevieja · Telegram Demo
-      </h1>
-      <p style={{ color: "#8888aa", fontSize: 13, margin: 0 }}>Демо-чат · выберите язык для начала</p>
+      <div style={{ textAlign: "center" }}>
+        <h1 style={{ color: "#fff", fontSize: 18, fontWeight: 700, margin: "0 0 4px" }}>
+          Torrevieja Cars · Telegram Demo
+        </h1>
+        <p style={{ color: "#8888aa", fontSize: 12, margin: 0 }}>Демо-чат в браузере · выберите язык для начала</p>
+      </div>
 
-      <IPhoneMockup statusBarColor="#2AABEE">
-        <TelegramHeader />
-        <ChatEngine channel="telegram" apiBase={API_BASE} theme={TELEGRAM_THEME} />
-      </IPhoneMockup>
+      <div style={{
+        transformOrigin: "top center",
+        transform: `scale(${scale})`,
+        marginBottom: heightOffset,
+      }}>
+        <IPhoneMockup statusBarColor="#2AABEE">
+          <TelegramHeader />
+          <ChatEngine channel="telegram" apiBase={API_BASE} theme={TELEGRAM_THEME} />
+        </IPhoneMockup>
+      </div>
 
-      <a href="/" style={{ color: "#2AABEE", fontSize: 13, textDecoration: "none" }}>← Назад</a>
+      <a href="/" style={{ color: "#2AABEE", fontSize: 13, textDecoration: "none" }}>← Назад на сайт</a>
     </div>
   )
 }

@@ -7,9 +7,9 @@ const LANG_LABELS = {
 }
 
 const WELCOME = {
-  ru: "Привет! 👋 Я ассистент автосалона Best Cars Torrevieja. Чем могу помочь?",
-  es: "¡Hola! 👋 Soy el asistente de Best Cars Torrevieja. ¿En qué puedo ayudarte?",
-  en: "Hi! 👋 I'm the Best Cars Torrevieja assistant. How can I help you?",
+  ru: "Привет! 👋 Я ассистент автосалона Torrevieja Cars. Чем могу помочь?",
+  es: "¡Hola! 👋 Soy el asistente de Torrevieja Cars. ¿En qué puedo ayudarte?",
+  en: "Hi! 👋 I'm the Torrevieja Cars assistant. How can I help you?",
 }
 
 function uuid() {
