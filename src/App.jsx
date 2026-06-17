@@ -188,13 +188,13 @@ export default function App() {
   const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
 
   return (
-    <div className="min-h-screen bg-[#1a1f3a] text-white font-sans">
+    <div className="min-h-screen bg-slate-50 text-gray-900 font-sans">
 
       {/* ── НАВИГАЦИЯ ── */}
-      <nav className="sticky top-0 z-50 bg-[#1a1f3a]/90 backdrop-blur-md border-b border-white/10 px-4 py-3">
+      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 px-4 py-3">
         <div className="max-w-5xl mx-auto flex items-center justify-between">
           <div className="font-bold text-lg">
-            <span className="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-cyan-500 to-violet-500 bg-clip-text text-transparent">
               AutomatIQ
             </span>
           </div>
@@ -203,13 +203,13 @@ export default function App() {
               <button key={l} onClick={() => setLang(l)}
                 className={`text-xs px-2.5 py-1 rounded-full border transition-colors
                   ${lang === l
-                    ? "bg-cyan-500/20 text-cyan-400 border-cyan-500/40"
-                    : "text-gray-500 border-white/10 hover:border-white/20 hover:text-gray-300"}`}>
+                    ? "bg-cyan-50 text-cyan-600 border-cyan-300"
+                    : "text-gray-500 border-gray-200 hover:border-gray-300 hover:text-gray-700"}`}>
                 {l === "ru" ? "🇷🇺 RU" : "🇬🇧 EN"}
               </button>
             ))}
             <button onClick={() => scrollTo("diagnosis")}
-              className="hidden sm:block bg-cyan-500 text-black text-sm px-4 py-1.5 rounded-lg font-bold hover:bg-cyan-400 transition-colors">
+              className="hidden sm:block bg-cyan-500 text-white text-sm px-4 py-1.5 rounded-lg font-bold hover:bg-cyan-600 transition-colors">
               {c.nav_cta}
             </button>
           </div>
@@ -218,34 +218,32 @@ export default function App() {
 
       {/* ── HERO ── */}
       <section className="relative px-4 py-20 sm:py-32 overflow-hidden bg-grid">
-        {/* Декоративные орбы */}
-        <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-cyan-400/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-400/15 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative max-w-3xl mx-auto text-center">
-          {/* Бейдж */}
-          <div className="inline-flex items-center gap-2 border border-cyan-500/30 rounded-full px-4 py-1.5 text-xs text-cyan-400 mb-6 bg-cyan-500/5">
-            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+          <div className="inline-flex items-center gap-2 border border-cyan-400/50 rounded-full px-4 py-1.5 text-xs text-cyan-600 mb-6 bg-cyan-50">
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse" />
             {c.hero_badge}
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-bold leading-tight mb-6">
-            <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-violet-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-cyan-500 via-blue-500 to-violet-600 bg-clip-text text-transparent">
               {c.hero_title}
             </span>
           </h1>
 
-          <p className="text-lg text-gray-400 mb-10 max-w-xl mx-auto leading-relaxed">
+          <p className="text-lg text-gray-600 mb-10 max-w-xl mx-auto leading-relaxed">
             {c.hero_sub}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <button onClick={() => scrollTo("diagnosis")}
-              className="bg-cyan-500 text-black px-7 py-3 rounded-xl font-bold hover:bg-cyan-400 transition-colors text-sm shadow-lg shadow-cyan-500/25">
+              className="bg-cyan-500 text-white px-7 py-3 rounded-xl font-bold hover:bg-cyan-600 transition-colors text-sm shadow-lg shadow-cyan-500/25">
               {c.hero_cta}
             </button>
             <button onClick={() => scrollTo("cases")}
-              className="border border-white/15 text-gray-300 px-7 py-3 rounded-xl font-semibold hover:border-white/30 hover:text-white transition-colors text-sm">
+              className="border border-gray-300 text-gray-700 px-7 py-3 rounded-xl font-semibold hover:border-gray-400 hover:text-gray-900 transition-colors text-sm">
               {c.hero_cta2}
             </button>
           </div>
@@ -253,10 +251,10 @@ export default function App() {
       </section>
 
       {/* ── ДЕМО ── */}
-      <section className="px-4 py-16 bg-[#1a1f3a]">
+      <section className="px-4 py-16 bg-white">
         <div className="max-w-3xl mx-auto text-center">
-          <p className="text-xs text-gray-500 uppercase tracking-widest mb-2">Live demo</p>
-          <h2 className="text-2xl font-bold mb-2 text-white">{c.demo_title}</h2>
+          <p className="text-xs text-gray-400 uppercase tracking-widest mb-2">Live demo</p>
+          <h2 className="text-2xl font-bold mb-2 text-gray-900">{c.demo_title}</h2>
           <p className="text-gray-500 text-sm mb-12">{c.demo_sub}</p>
           <div className="grid sm:grid-cols-2 gap-12 max-w-sm mx-auto sm:max-w-none">
 
@@ -291,7 +289,7 @@ export default function App() {
                   <div className="w-20 h-1 bg-gray-600 rounded-full" />
                 </div>
               </div>
-              <div className="inline-flex items-center gap-2 bg-sky-500/15 border border-sky-500/30 text-sky-400 px-5 py-2.5 rounded-xl text-sm font-semibold group-hover:bg-sky-500/25 transition-colors">
+              <div className="inline-flex items-center gap-2 bg-sky-50 border border-sky-200 text-sky-600 px-5 py-2.5 rounded-xl text-sm font-semibold group-hover:bg-sky-100 transition-colors">
                 🤖 {c.demo_try_tg}
               </div>
             </a>
@@ -327,7 +325,7 @@ export default function App() {
                   <div className="w-20 h-1 bg-gray-500 rounded-full" />
                 </div>
               </div>
-              <div className="inline-flex items-center gap-2 bg-green-500/15 border border-green-500/30 text-green-400 px-5 py-2.5 rounded-xl text-sm font-semibold group-hover:bg-green-500/25 transition-colors">
+              <div className="inline-flex items-center gap-2 bg-green-50 border border-green-200 text-green-700 px-5 py-2.5 rounded-xl text-sm font-semibold group-hover:bg-green-100 transition-colors">
                 💬 {c.demo_try_wa}
               </div>
             </a>
@@ -337,15 +335,15 @@ export default function App() {
       </section>
 
       {/* ── ПРОБЛЕМЫ ── */}
-      <section className="px-4 py-16 bg-[#222748]">
+      <section className="px-4 py-16 bg-slate-50">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold text-center mb-10">{c.problems_title}</h2>
+          <h2 className="text-2xl font-bold text-center mb-10 text-gray-900">{c.problems_title}</h2>
           <div className="grid sm:grid-cols-3 gap-5">
             {c.problems.map((p, i) => (
-              <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-5 hover:border-white/20 transition-colors">
+              <div key={i} className="bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md transition-shadow">
                 <div className="text-3xl mb-3">{p.icon}</div>
-                <h3 className="font-semibold mb-2 text-white">{p.title}</h3>
-                <p className="text-sm text-gray-400 leading-relaxed">{p.text}</p>
+                <h3 className="font-semibold mb-2 text-gray-900">{p.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{p.text}</p>
               </div>
             ))}
           </div>
@@ -353,15 +351,15 @@ export default function App() {
       </section>
 
       {/* ── КАК РАБОТАЕТ ── */}
-      <section className="px-4 py-16 bg-[#1a1f3a]">
+      <section className="px-4 py-16 bg-white">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold text-center mb-12">{c.how_title}</h2>
+          <h2 className="text-2xl font-bold text-center mb-12 text-gray-900">{c.how_title}</h2>
           <div className="grid sm:grid-cols-3 gap-6">
             {c.how_steps.map((s, i) => (
               <div key={i} className="text-center">
-                <div className="text-5xl font-bold text-cyan-400/20 mb-3">{s.n}</div>
-                <h3 className="font-semibold mb-2 text-white">{s.title}</h3>
-                <p className="text-sm text-gray-400 leading-relaxed">{s.text}</p>
+                <div className="text-5xl font-bold text-cyan-400/40 mb-3">{s.n}</div>
+                <h3 className="font-semibold mb-2 text-gray-900">{s.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{s.text}</p>
               </div>
             ))}
           </div>
@@ -369,33 +367,33 @@ export default function App() {
       </section>
 
       {/* ── ПАКЕТЫ ── */}
-      <section className="px-4 py-16 bg-[#222748]">
+      <section className="px-4 py-16 bg-slate-50">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold text-center mb-10">{c.packages_title}</h2>
+          <h2 className="text-2xl font-bold text-center mb-10 text-gray-900">{c.packages_title}</h2>
           <div className="grid sm:grid-cols-3 gap-5">
             {c.packages.map((pkg, i) => (
-              <div key={i} className={`relative border rounded-2xl p-6 flex flex-col transition-colors ${
+              <div key={i} className={`relative border rounded-2xl p-6 flex flex-col transition-all ${
                 pkg.highlight
-                  ? "bg-cyan-500/10 border-cyan-500/40 shadow-lg shadow-cyan-500/10"
-                  : "bg-white/5 border-white/10 hover:border-white/20"
+                  ? "bg-cyan-50 border-cyan-300 shadow-lg shadow-cyan-500/10"
+                  : "bg-white border-gray-200 hover:shadow-md"
               }`}>
                 {pkg.badge && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-cyan-500 text-black text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-cyan-500 text-white text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">
                     {pkg.badge}
                   </div>
                 )}
                 <div className="mb-4">
-                  <div className="text-sm font-semibold text-gray-400 mb-1">{pkg.name}</div>
+                  <div className="text-sm font-semibold text-gray-500 mb-1">{pkg.name}</div>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-3xl font-bold text-white">{pkg.price}</span>
+                    <span className="text-3xl font-bold text-gray-900">{pkg.price}</span>
                     <span className="text-sm text-gray-500">/ {pkg.period}</span>
                   </div>
-                  <p className="text-sm text-gray-400 mt-2">{pkg.desc}</p>
+                  <p className="text-sm text-gray-600 mt-2">{pkg.desc}</p>
                 </div>
                 <ul className="space-y-2 mb-6 flex-1">
                   {pkg.features.map((f, j) => (
-                    <li key={j} className="flex items-start gap-2 text-sm text-gray-300">
-                      <span className="text-cyan-400 mt-0.5 flex-shrink-0">✓</span>
+                    <li key={j} className="flex items-start gap-2 text-sm text-gray-700">
+                      <span className="text-cyan-500 mt-0.5 flex-shrink-0">✓</span>
                       {f}
                     </li>
                   ))}
@@ -403,8 +401,8 @@ export default function App() {
                 <button onClick={() => scrollTo("diagnosis")}
                   className={`w-full py-2.5 rounded-xl font-semibold text-sm transition-colors ${
                     pkg.highlight
-                      ? "bg-cyan-500 text-black hover:bg-cyan-400"
-                      : "border border-white/15 text-gray-300 hover:border-white/30 hover:text-white"
+                      ? "bg-cyan-500 text-white hover:bg-cyan-600"
+                      : "border border-gray-300 text-gray-700 hover:border-gray-400 hover:bg-gray-50"
                   }`}>
                   {pkg.cta}
                 </button>
@@ -416,12 +414,12 @@ export default function App() {
 
       {/* ── ГРАНТЫ ЕС ── */}
       <section className="px-4 py-14 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-violet-900/50 to-cyan-900/40" />
-        <div className="absolute inset-0 bg-grid opacity-40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-violet-600 to-cyan-600" />
+        <div className="absolute inset-0 bg-grid opacity-20" />
         <div className="relative max-w-3xl mx-auto text-center">
           <div className="text-3xl mb-3">🇪🇺</div>
-          <h2 className="text-2xl font-bold mb-3">{c.grants_title}</h2>
-          <p className="text-gray-300 mb-6 leading-relaxed max-w-xl mx-auto">{c.grants_text}</p>
+          <h2 className="text-2xl font-bold mb-3 text-white">{c.grants_title}</h2>
+          <p className="text-white/80 mb-6 leading-relaxed max-w-xl mx-auto">{c.grants_text}</p>
           <button onClick={() => scrollTo("diagnosis")}
             className="bg-white text-gray-900 px-6 py-2.5 rounded-xl font-semibold text-sm hover:bg-gray-100 transition-colors">
             {c.grants_cta}
@@ -430,43 +428,43 @@ export default function App() {
       </section>
 
       {/* ── ДИАГНОСТИКА ── */}
-      <section id="diagnosis" className="px-4 py-16 bg-[#222748]">
+      <section id="diagnosis" className="px-4 py-16 bg-white">
         <div className="max-w-lg mx-auto">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold mb-2">{c.diag_title}</h2>
-            <p className="text-gray-400 text-sm">{c.diag_sub}</p>
+            <h2 className="text-2xl font-bold mb-2 text-gray-900">{c.diag_title}</h2>
+            <p className="text-gray-500 text-sm">{c.diag_sub}</p>
           </div>
-          <div className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
+          <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
             <DiagnosticBot
               lang={lang}
               apiBase={import.meta.env.VITE_API_BASE || "http://localhost:8000"}
-              darkMode={true}
+              darkMode={false}
             />
           </div>
         </div>
       </section>
 
       {/* ── КЕЙСЫ ── */}
-      <section id="cases" className="px-4 py-16 bg-[#1a1f3a]">
+      <section id="cases" className="px-4 py-16 bg-slate-50">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold text-center mb-10">{c.cases_title}</h2>
+          <h2 className="text-2xl font-bold text-center mb-10 text-gray-900">{c.cases_title}</h2>
           <div className="grid sm:grid-cols-3 gap-5">
             {c.cases.map((cs, i) => (
-              <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-5 hover:border-white/20 transition-colors">
-                <div className="text-xs font-semibold text-cyan-400 mb-3">{cs.sector}</div>
+              <div key={i} className="bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md transition-shadow">
+                <div className="text-xs font-semibold text-cyan-600 mb-3">{cs.sector}</div>
                 <div className="mb-3">
-                  <div className="text-xs text-gray-600 mb-1">
+                  <div className="text-xs text-gray-400 mb-1">
                     {lang === "ru" ? "Проблема" : "Problem"}
                   </div>
-                  <p className="text-sm text-gray-300">{cs.problem}</p>
+                  <p className="text-sm text-gray-700">{cs.problem}</p>
                 </div>
                 <div className="mb-3">
-                  <div className="text-xs text-gray-600 mb-1">
+                  <div className="text-xs text-gray-400 mb-1">
                     {lang === "ru" ? "Решение" : "Solution"}
                   </div>
-                  <p className="text-sm text-gray-300">{cs.solution}</p>
+                  <p className="text-sm text-gray-700">{cs.solution}</p>
                 </div>
-                <div className="bg-green-500/10 border border-green-500/20 rounded-lg px-3 py-2 text-xs text-green-400 font-medium">
+                <div className="bg-green-50 border border-green-200 rounded-lg px-3 py-2 text-xs text-green-700 font-medium">
                   📈 {cs.result}
                 </div>
               </div>
@@ -476,17 +474,17 @@ export default function App() {
       </section>
 
       {/* ── ОБО МНЕ ── */}
-      <section className="px-4 py-16 bg-[#222748]">
+      <section className="px-4 py-16 bg-white">
         <div className="max-w-3xl mx-auto flex flex-col sm:flex-row gap-8 items-center">
           <img src="/photo.jpg"
-            className="w-24 h-24 rounded-full object-cover flex-shrink-0 ring-2 ring-cyan-500/30"
+            className="w-24 h-24 rounded-full object-cover flex-shrink-0 ring-2 ring-cyan-400/40"
             alt="Photo" />
           <div>
-            <h2 className="text-2xl font-bold mb-3">{c.about_title}</h2>
-            <p className="text-gray-400 leading-relaxed mb-4">{c.about_text}</p>
+            <h2 className="text-2xl font-bold mb-3 text-gray-900">{c.about_title}</h2>
+            <p className="text-gray-600 leading-relaxed mb-4">{c.about_text}</p>
             <div className="flex flex-wrap gap-2">
               {c.about_items.map((item, i) => (
-                <span key={i} className="bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-xs font-medium px-3 py-1 rounded-full">
+                <span key={i} className="bg-cyan-50 text-cyan-600 border border-cyan-200 text-xs font-medium px-3 py-1 rounded-full">
                   ✓ {item}
                 </span>
               ))}
@@ -496,21 +494,21 @@ export default function App() {
       </section>
 
       {/* ── КОНТАКТЫ ── */}
-      <section className="px-4 py-16 bg-[#1a1f3a]">
+      <section className="px-4 py-16 bg-slate-50">
         <div className="max-w-md mx-auto text-center">
-          <h2 className="text-2xl font-bold mb-2">{c.contact_title}</h2>
-          <p className="text-gray-400 text-sm mb-6">{c.contact_text}</p>
+          <h2 className="text-2xl font-bold mb-2 text-gray-900">{c.contact_title}</h2>
+          <p className="text-gray-500 text-sm mb-6">{c.contact_text}</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a href="https://wa.me/34627345058"
-              className="flex items-center justify-center gap-2 bg-green-500/15 border border-green-500/30 text-green-400 px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-green-500/25 transition-colors">
+              className="flex items-center justify-center gap-2 bg-green-50 border border-green-200 text-green-700 px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-green-100 transition-colors">
               💬 WhatsApp
             </a>
             <a href="https://t.me/sanya198426"
-              className="flex items-center justify-center gap-2 bg-sky-500/15 border border-sky-500/30 text-sky-400 px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-sky-500/25 transition-colors">
+              className="flex items-center justify-center gap-2 bg-sky-50 border border-sky-200 text-sky-700 px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-sky-100 transition-colors">
               ✈️ Telegram
             </a>
             <a href="mailto:aryaboshkapov@gmail.com"
-              className="flex items-center justify-center gap-2 border border-white/10 text-gray-300 px-5 py-2.5 rounded-xl text-sm font-semibold hover:border-white/25 hover:text-white transition-colors">
+              className="flex items-center justify-center gap-2 border border-gray-200 text-gray-700 px-5 py-2.5 rounded-xl text-sm font-semibold hover:border-gray-300 hover:bg-white transition-colors">
               📧 Email
             </a>
           </div>
@@ -518,8 +516,8 @@ export default function App() {
       </section>
 
       {/* ── FOOTER ── */}
-      <footer className="px-4 py-6 border-t border-white/5 text-center">
-        <p className="text-xs text-gray-700">{c.footer_copy}</p>
+      <footer className="px-4 py-6 border-t border-gray-200 text-center">
+        <p className="text-xs text-gray-400">{c.footer_copy}</p>
       </footer>
 
     </div>
