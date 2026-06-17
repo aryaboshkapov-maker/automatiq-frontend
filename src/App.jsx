@@ -4,9 +4,9 @@ import DiagnosticBot from "./components/DiagnosticBot"
 const CONTENT = {
   ru: {
     nav_cta: "Бесплатная диагностика",
-    hero_badge: "AI-автоматизация · Торревьеха и Коста-Бланка",
-    hero_title: "Автоматизирую бизнес в Торревьехе и Коста-Бланке с помощью ИИ",
-    hero_sub: "WhatsApp-боты, автозапись, автоответы на отзывы. Работаю с бизнесами в Торревьехе, Ориуэла-Косте, Гвардамаре и по всему побережью.",
+    hero_badge: "AI-автоматизация · Аликанте",
+    hero_title: "Автоматизирую бизнес в Аликанте с помощью ИИ",
+    hero_sub: "WhatsApp-боты, автозапись, автоответы на отзывы. Работаю с бизнесами в Аликанте и провинции.",
     hero_cta: "Пройти диагностику бесплатно →",
     hero_cta2: "Смотреть примеры",
     problems_title: "Узнаёте себя?",
@@ -68,34 +68,34 @@ const CONTENT = {
       },
     ],
     grants_title: "Автоматизация — это не дорого",
-    grants_text: "Большинство решений окупаются за 1–2 месяца за счёт сэкономленного времени и сокращения потерь. Для малого бизнеса в Торревьехе и регионе — рассчитаем ROI конкретно под вас, бесплатно.",
+    grants_text: "Большинство решений окупаются за 1–2 месяца за счёт сэкономленного времени и сокращения потерь. Для малого бизнеса в Аликанте — рассчитаем ROI конкретно под вас, бесплатно.",
     grants_cta: "Рассчитать окупаемость →",
     demo_title: "Нажмите — попробуйте прямо сейчас",
-    demo_sub: "Живой AI-чат для автосалона Torrevieja Cars",
+    demo_sub: "Живой AI-чат для автосалона Alicante Cars",
     demo_try_tg: "Попробовать Telegram",
     demo_try_wa: "Попробовать WhatsApp",
-    demo_bot_msg: "Привет! 👋 Я ассистент Torrevieja Cars. Чем могу помочь?",
+    demo_bot_msg: "Привет! 👋 Я ассистент Alicante Cars. Чем могу помочь?",
     demo_suggestions: ["Купить авто", "Арендовать", "Трансфер"],
     diag_title: "Узнайте за 5 минут что можно автоматизировать",
     diag_sub: "Бесплатная диагностика — три конкретных решения для вашего бизнеса",
     cases_title: "Примеры результатов",
     cases: [
-      { sector: "Ресторан, Торревьеха", problem: "Терял брони ночью, тратил 2 часа на WhatsApp", solution: "WhatsApp-бот + автоподтверждения", result: "−20% потерянных броней, экономия 2 ч/день" },
-      { sector: "Стоматология, Ориуэла-Коста", problem: "20% no-show, администратор тонул в звонках", solution: "Автозапись + напоминания за 24ч и 2ч", result: "No-show с 20% до 6%, −2 ч/день" },
-      { sector: "Агентство недвижимости, Торревьеха", problem: "Иностранные клиенты не получали ответы ночью", solution: "Мультиязычный бот-квалификатор", result: "+35% конверсия, 4 языка без переводчика" },
+      { sector: "Ресторан, Аликанте", problem: "Терял брони ночью, тратил 2 часа на WhatsApp", solution: "WhatsApp-бот + автоподтверждения", result: "−20% потерянных броней, экономия 2 ч/день" },
+      { sector: "Стоматология, Аликанте", problem: "20% no-show, администратор тонул в звонках", solution: "Автозапись + напоминания за 24ч и 2ч", result: "No-show с 20% до 6%, −2 ч/день" },
+      { sector: "Агентство недвижимости, Аликанте", problem: "Иностранные клиенты не получали ответы ночью", solution: "Мультиязычный бот-квалификатор", result: "+35% конверсия, 4 языка без переводчика" },
     ],
-    about_title: "Привет, я живу и работаю в Торревьехе",
+    about_title: "Привет, я живу и работаю в Аликанте",
     about_text: "Помогаю местным бизнесам — русскоязычным и международным — освободить время от рутины с помощью ИИ. Знаю местную специфику изнутри. Работаю на русском, английском и испанском.",
-    about_items: ["Живу в Торревьехе", "Работаю на 3 языках", "Результат за 5 дней"],
+    about_items: ["Живу в Аликанте", "Работаю на 3 языках", "Результат за 5 дней"],
     contact_title: "Остались вопросы?",
     contact_text: "Напишите напрямую — отвечу в течение нескольких часов",
-    footer_copy: "© 2025 AutomatIQ · Torrevieja, España",
+    footer_copy: "© 2025 AutomatIQ · Alicante, España",
   },
   en: {
     nav_cta: "Free diagnosis",
-    hero_badge: "AI Automation · Torrevieja & Costa Blanca",
-    hero_title: "AI Automation for Businesses in Torrevieja & Costa Blanca",
-    hero_sub: "WhatsApp bots, automated booking, review replies. Serving businesses in Torrevieja, Orihuela Costa, Guardamar and along the coast.",
+    hero_badge: "AI Automation · Alicante",
+    hero_title: "AI Automation for Businesses in Alicante",
+    hero_sub: "WhatsApp bots, automated booking, review replies. Serving businesses in Alicante and the province.",
     hero_cta: "Get free diagnosis →",
     hero_cta2: "See examples",
     problems_title: "Sound familiar?",
@@ -157,28 +157,28 @@ const CONTENT = {
       },
     ],
     grants_title: "Automation pays for itself",
-    grants_text: "Most solutions pay back in 1–2 months through saved time and reduced losses. For small businesses in Torrevieja and the region — we calculate the ROI specifically for you, free of charge.",
+    grants_text: "Most solutions pay back in 1–2 months through saved time and reduced losses. For small businesses in Alicante — we calculate the ROI specifically for you, free of charge.",
     grants_cta: "Calculate your ROI →",
     demo_title: "Click — try it right now",
-    demo_sub: "Live AI chat for Torrevieja Cars dealership",
+    demo_sub: "Live AI chat for Alicante Cars dealership",
     demo_try_tg: "Try Telegram demo",
     demo_try_wa: "Try WhatsApp demo",
-    demo_bot_msg: "Hi! 👋 I'm the Torrevieja Cars assistant. How can I help?",
+    demo_bot_msg: "Hi! 👋 I'm the Alicante Cars assistant. How can I help?",
     demo_suggestions: ["Buy a car", "Rent a car", "Transfer"],
     diag_title: "Find out in 5 minutes what you can automate",
     diag_sub: "Free diagnosis — three concrete solutions for your business",
     cases_title: "Results",
     cases: [
-      { sector: "Restaurant, Torrevieja", problem: "Losing bookings overnight, 2 hours daily on WhatsApp", solution: "WhatsApp bot + auto-confirmations", result: "−20% lost bookings, saves 2h/day" },
-      { sector: "Dental clinic, Orihuela Costa", problem: "20% no-show rate, receptionist overwhelmed", solution: "Automated booking + 24h and 2h reminders", result: "No-show 20% → 6%, saves 2h/day" },
-      { sector: "Real estate agency, Torrevieja", problem: "Foreign clients got no reply overnight", solution: "Multilingual lead-qualifier bot", result: "+35% conversion, 4 languages without a translator" },
+      { sector: "Restaurant, Alicante", problem: "Losing bookings overnight, 2 hours daily on WhatsApp", solution: "WhatsApp bot + auto-confirmations", result: "−20% lost bookings, saves 2h/day" },
+      { sector: "Dental clinic, Alicante", problem: "20% no-show rate, receptionist overwhelmed", solution: "Automated booking + 24h and 2h reminders", result: "No-show 20% → 6%, saves 2h/day" },
+      { sector: "Real estate agency, Alicante", problem: "Foreign clients got no reply overnight", solution: "Multilingual lead-qualifier bot", result: "+35% conversion, 4 languages without a translator" },
     ],
-    about_title: "Hi — I'm based in Torrevieja",
+    about_title: "Hi — I'm based in Alicante",
     about_text: "I help local businesses — Russian-speaking and international — reclaim time from routine tasks using AI. I know the local market from the inside and work in Russian, English and Spanish.",
-    about_items: ["Based in Torrevieja", "Works in 3 languages", "Results in 5 days"],
+    about_items: ["Based in Alicante", "Works in 3 languages", "Results in 5 days"],
     contact_title: "Any questions?",
     contact_text: "Message me directly — I reply within a few hours",
-    footer_copy: "© 2025 AutomatIQ · Torrevieja, España",
+    footer_copy: "© 2025 AutomatIQ · Alicante, España",
   },
 }
 
@@ -188,10 +188,10 @@ export default function App() {
   const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
 
   return (
-    <div className="min-h-screen bg-[#060612] text-white font-sans">
+    <div className="min-h-screen bg-[#0d0f20] text-white font-sans">
 
       {/* ── НАВИГАЦИЯ ── */}
-      <nav className="sticky top-0 z-50 bg-[#060612]/90 backdrop-blur-md border-b border-white/10 px-4 py-3">
+      <nav className="sticky top-0 z-50 bg-[#0d0f20]/90 backdrop-blur-md border-b border-white/10 px-4 py-3">
         <div className="max-w-5xl mx-auto flex items-center justify-between">
           <div className="font-bold text-lg">
             <span className="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
@@ -253,7 +253,7 @@ export default function App() {
       </section>
 
       {/* ── ДЕМО ── */}
-      <section className="px-4 py-16 bg-[#060612]">
+      <section className="px-4 py-16 bg-[#0d0f20]">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-xs text-gray-500 uppercase tracking-widest mb-2">Live demo</p>
           <h2 className="text-2xl font-bold mb-2 text-white">{c.demo_title}</h2>
@@ -269,7 +269,7 @@ export default function App() {
                 <div className="bg-[#2AABEE] px-3 py-2 flex items-center gap-2">
                   <div className="w-8 h-8 rounded-full bg-[#1a7ab5] flex items-center justify-center text-base flex-shrink-0">🚗</div>
                   <div className="text-left">
-                    <div className="text-white text-[11px] font-semibold leading-tight">Torrevieja Cars</div>
+                    <div className="text-white text-[11px] font-semibold leading-tight">Alicante Cars</div>
                     <div className="text-blue-100 text-[9px]">bot</div>
                   </div>
                 </div>
@@ -305,7 +305,7 @@ export default function App() {
                 <div className="bg-[#075E54] px-3 py-2 flex items-center gap-2">
                   <div className="w-8 h-8 rounded-full bg-[#128C7E] flex items-center justify-center text-base flex-shrink-0">🚗</div>
                   <div className="text-left">
-                    <div className="text-white text-[11px] font-semibold leading-tight">Torrevieja Cars</div>
+                    <div className="text-white text-[11px] font-semibold leading-tight">Alicante Cars</div>
                     <div className="text-green-100 text-[9px]">online</div>
                   </div>
                 </div>
@@ -337,7 +337,7 @@ export default function App() {
       </section>
 
       {/* ── ПРОБЛЕМЫ ── */}
-      <section className="px-4 py-16 bg-[#0a0a1a]">
+      <section className="px-4 py-16 bg-[#141628]">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold text-center mb-10">{c.problems_title}</h2>
           <div className="grid sm:grid-cols-3 gap-5">
@@ -353,7 +353,7 @@ export default function App() {
       </section>
 
       {/* ── КАК РАБОТАЕТ ── */}
-      <section className="px-4 py-16 bg-[#060612]">
+      <section className="px-4 py-16 bg-[#0d0f20]">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold text-center mb-12">{c.how_title}</h2>
           <div className="grid sm:grid-cols-3 gap-6">
@@ -362,6 +362,52 @@ export default function App() {
                 <div className="text-5xl font-bold text-cyan-400/20 mb-3">{s.n}</div>
                 <h3 className="font-semibold mb-2 text-white">{s.title}</h3>
                 <p className="text-sm text-gray-400 leading-relaxed">{s.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── ПАКЕТЫ ── */}
+      <section className="px-4 py-16 bg-[#141628]">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold text-center mb-10">{c.packages_title}</h2>
+          <div className="grid sm:grid-cols-3 gap-5">
+            {c.packages.map((pkg, i) => (
+              <div key={i} className={`relative border rounded-2xl p-6 flex flex-col transition-colors ${
+                pkg.highlight
+                  ? "bg-cyan-500/10 border-cyan-500/40 shadow-lg shadow-cyan-500/10"
+                  : "bg-white/5 border-white/10 hover:border-white/20"
+              }`}>
+                {pkg.badge && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-cyan-500 text-black text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">
+                    {pkg.badge}
+                  </div>
+                )}
+                <div className="mb-4">
+                  <div className="text-sm font-semibold text-gray-400 mb-1">{pkg.name}</div>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-3xl font-bold text-white">{pkg.price}</span>
+                    <span className="text-sm text-gray-500">/ {pkg.period}</span>
+                  </div>
+                  <p className="text-sm text-gray-400 mt-2">{pkg.desc}</p>
+                </div>
+                <ul className="space-y-2 mb-6 flex-1">
+                  {pkg.features.map((f, j) => (
+                    <li key={j} className="flex items-start gap-2 text-sm text-gray-300">
+                      <span className="text-cyan-400 mt-0.5 flex-shrink-0">✓</span>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <button onClick={() => scrollTo("diagnosis")}
+                  className={`w-full py-2.5 rounded-xl font-semibold text-sm transition-colors ${
+                    pkg.highlight
+                      ? "bg-cyan-500 text-black hover:bg-cyan-400"
+                      : "border border-white/15 text-gray-300 hover:border-white/30 hover:text-white"
+                  }`}>
+                  {pkg.cta}
+                </button>
               </div>
             ))}
           </div>
@@ -384,7 +430,7 @@ export default function App() {
       </section>
 
       {/* ── ДИАГНОСТИКА ── */}
-      <section id="diagnosis" className="px-4 py-16 bg-[#0a0a1a]">
+      <section id="diagnosis" className="px-4 py-16 bg-[#141628]">
         <div className="max-w-lg mx-auto">
           <div className="text-center mb-8">
             <h2 className="text-2xl font-bold mb-2">{c.diag_title}</h2>
@@ -401,7 +447,7 @@ export default function App() {
       </section>
 
       {/* ── КЕЙСЫ ── */}
-      <section id="cases" className="px-4 py-16 bg-[#060612]">
+      <section id="cases" className="px-4 py-16 bg-[#0d0f20]">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold text-center mb-10">{c.cases_title}</h2>
           <div className="grid sm:grid-cols-3 gap-5">
@@ -430,7 +476,7 @@ export default function App() {
       </section>
 
       {/* ── ОБО МНЕ ── */}
-      <section className="px-4 py-16 bg-[#0a0a1a]">
+      <section className="px-4 py-16 bg-[#141628]">
         <div className="max-w-3xl mx-auto flex flex-col sm:flex-row gap-8 items-center">
           <img src="/photo.jpg"
             className="w-24 h-24 rounded-full object-cover flex-shrink-0 ring-2 ring-cyan-500/30"
@@ -450,7 +496,7 @@ export default function App() {
       </section>
 
       {/* ── КОНТАКТЫ ── */}
-      <section className="px-4 py-16 bg-[#060612]">
+      <section className="px-4 py-16 bg-[#0d0f20]">
         <div className="max-w-md mx-auto text-center">
           <h2 className="text-2xl font-bold mb-2">{c.contact_title}</h2>
           <p className="text-gray-400 text-sm mb-6">{c.contact_text}</p>
