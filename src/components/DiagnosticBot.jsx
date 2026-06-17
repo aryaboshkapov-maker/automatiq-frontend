@@ -223,6 +223,13 @@ export default function DiagnosticBot({
         }),
       })
       setLeadSent(true)
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "conversion", {
+          send_to: "AW-18248029512/vn2vCOn678AcEMiqq_1D",
+          value: 1.0,
+          currency: "EUR",
+        })
+      }
     } catch {
       setSubmitError(t.error_submit)
     } finally {
