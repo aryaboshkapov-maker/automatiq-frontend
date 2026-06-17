@@ -188,10 +188,10 @@ export default function App() {
   const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
 
   return (
-    <div className="min-h-screen bg-[#0d0f20] text-white font-sans">
+    <div className="min-h-screen bg-[#1a1f3a] text-white font-sans">
 
       {/* ── НАВИГАЦИЯ ── */}
-      <nav className="sticky top-0 z-50 bg-[#0d0f20]/90 backdrop-blur-md border-b border-white/10 px-4 py-3">
+      <nav className="sticky top-0 z-50 bg-[#1a1f3a]/90 backdrop-blur-md border-b border-white/10 px-4 py-3">
         <div className="max-w-5xl mx-auto flex items-center justify-between">
           <div className="font-bold text-lg">
             <span className="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
@@ -253,7 +253,7 @@ export default function App() {
       </section>
 
       {/* ── ДЕМО ── */}
-      <section className="px-4 py-16 bg-[#0d0f20]">
+      <section className="px-4 py-16 bg-[#1a1f3a]">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-xs text-gray-500 uppercase tracking-widest mb-2">Live demo</p>
           <h2 className="text-2xl font-bold mb-2 text-white">{c.demo_title}</h2>
@@ -337,7 +337,7 @@ export default function App() {
       </section>
 
       {/* ── ПРОБЛЕМЫ ── */}
-      <section className="px-4 py-16 bg-[#141628]">
+      <section className="px-4 py-16 bg-[#222748]">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold text-center mb-10">{c.problems_title}</h2>
           <div className="grid sm:grid-cols-3 gap-5">
@@ -353,7 +353,7 @@ export default function App() {
       </section>
 
       {/* ── КАК РАБОТАЕТ ── */}
-      <section className="px-4 py-16 bg-[#0d0f20]">
+      <section className="px-4 py-16 bg-[#1a1f3a]">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold text-center mb-12">{c.how_title}</h2>
           <div className="grid sm:grid-cols-3 gap-6">
@@ -369,7 +369,7 @@ export default function App() {
       </section>
 
       {/* ── ПАКЕТЫ ── */}
-      <section className="px-4 py-16 bg-[#141628]">
+      <section className="px-4 py-16 bg-[#222748]">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold text-center mb-10">{c.packages_title}</h2>
           <div className="grid sm:grid-cols-3 gap-5">
@@ -430,7 +430,7 @@ export default function App() {
       </section>
 
       {/* ── ДИАГНОСТИКА ── */}
-      <section id="diagnosis" className="px-4 py-16 bg-[#141628]">
+      <section id="diagnosis" className="px-4 py-16 bg-[#222748]">
         <div className="max-w-lg mx-auto">
           <div className="text-center mb-8">
             <h2 className="text-2xl font-bold mb-2">{c.diag_title}</h2>
@@ -447,7 +447,7 @@ export default function App() {
       </section>
 
       {/* ── КЕЙСЫ ── */}
-      <section id="cases" className="px-4 py-16 bg-[#0d0f20]">
+      <section id="cases" className="px-4 py-16 bg-[#1a1f3a]">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold text-center mb-10">{c.cases_title}</h2>
           <div className="grid sm:grid-cols-3 gap-5">
@@ -476,7 +476,7 @@ export default function App() {
       </section>
 
       {/* ── ОБО МНЕ ── */}
-      <section className="px-4 py-16 bg-[#141628]">
+      <section className="px-4 py-16 bg-[#222748]">
         <div className="max-w-3xl mx-auto flex flex-col sm:flex-row gap-8 items-center">
           <img src="/photo.jpg"
             className="w-24 h-24 rounded-full object-cover flex-shrink-0 ring-2 ring-cyan-500/30"
@@ -496,7 +496,7 @@ export default function App() {
       </section>
 
       {/* ── КОНТАКТЫ ── */}
-      <section className="px-4 py-16 bg-[#0d0f20]">
+      <section className="px-4 py-16 bg-[#1a1f3a]">
         <div className="max-w-md mx-auto text-center">
           <h2 className="text-2xl font-bold mb-2">{c.contact_title}</h2>
           <p className="text-gray-400 text-sm mb-6">{c.contact_text}</p>
