@@ -25,18 +25,18 @@ import DiagnosticBot from "./components/DiagnosticBot"
 // ─── Floating particles (deterministic positions) ─────────────────────────────
 
 const PARTICLE_DATA = [
-  { x: 12, y: 22, s: 3, d: 14, dl: 0,   c: "#009FD4" },
-  { x: 78, y: 18, s: 2, d: 11, dl: 2.5, c: "#FF6B35" },
-  { x: 55, y: 75, s: 4, d: 16, dl: 1,   c: "#009FD4" },
-  { x: 28, y: 82, s: 2, d: 12, dl: 3.8, c: "#FF6B35" },
-  { x: 88, y: 48, s: 3, d: 13, dl: 0.8, c: "#009FD4" },
-  { x: 42, y: 32, s: 2, d: 15, dl: 4.5, c: "#FF6B35" },
-  { x: 68, y: 88, s: 3, d: 10, dl: 1.8, c: "#009FD4" },
-  { x: 8,  y: 65, s: 2, d: 17, dl: 3,   c: "#FF6B35" },
-  { x: 52, y: 8,  s: 3, d: 12, dl: 5,   c: "#009FD4" },
-  { x: 22, y: 52, s: 2, d: 14, dl: 1.2, c: "#FF6B35" },
-  { x: 95, y: 30, s: 2, d: 13, dl: 2,   c: "#009FD4" },
-  { x: 35, y: 10, s: 3, d: 11, dl: 4,   c: "#FF6B35" },
+  { x: 12, y: 22, s: 3, d: 14, dl: 0,   c: "#0F62FE" },
+  { x: 78, y: 18, s: 2, d: 11, dl: 2.5, c: "#6929C4" },
+  { x: 55, y: 75, s: 4, d: 16, dl: 1,   c: "#0F62FE" },
+  { x: 28, y: 82, s: 2, d: 12, dl: 3.8, c: "#6929C4" },
+  { x: 88, y: 48, s: 3, d: 13, dl: 0.8, c: "#0F62FE" },
+  { x: 42, y: 32, s: 2, d: 15, dl: 4.5, c: "#6929C4" },
+  { x: 68, y: 88, s: 3, d: 10, dl: 1.8, c: "#0F62FE" },
+  { x: 8,  y: 65, s: 2, d: 17, dl: 3,   c: "#6929C4" },
+  { x: 52, y: 8,  s: 3, d: 12, dl: 5,   c: "#0F62FE" },
+  { x: 22, y: 52, s: 2, d: 14, dl: 1.2, c: "#6929C4" },
+  { x: 95, y: 30, s: 2, d: 13, dl: 2,   c: "#0F62FE" },
+  { x: 35, y: 10, s: 3, d: 11, dl: 4,   c: "#6929C4" },
 ]
 
 function FloatingParticles() {
@@ -47,7 +47,7 @@ function FloatingParticles() {
           key={i}
           className="absolute rounded-full"
           style={{ left: `${p.x}%`, top: `${p.y}%`, width: p.s, height: p.s, background: p.c }}
-          animate={{ y: [0, -50, 0], opacity: [0.08, 0.5, 0.08], scale: [1, 2, 1] }}
+          animate={{ y: [0, -50, 0], opacity: [0.1, 0.7, 0.1], scale: [1, 2, 1] }}
           transition={{ duration: p.d, delay: p.dl, repeat: Infinity, ease: "easeInOut" }}
         />
       ))}
@@ -61,29 +61,26 @@ function GlowingStepIcon({ Icon, n }) {
   return (
     <div className="relative mx-auto w-fit mb-6">
       <div
-        className="absolute inset-0 rounded-2xl blur-2xl opacity-30"
-        style={{ background: "#009FD4", transform: "scale(1.4)" }}
+        className="absolute inset-0 rounded-2xl blur-2xl opacity-50"
+        style={{ background: "#0F62FE", transform: "scale(1.4)" }}
       />
       <motion.div
         className="absolute inset-[-2px] rounded-[22px]"
         style={{
           background:
-            "conic-gradient(from 0deg, #009FD4 0%, #FF6B35 45%, transparent 60%, #009FD4 100%)",
+            "conic-gradient(from 0deg, #0F62FE 0%, #6929C4 45%, transparent 60%, #0F62FE 100%)",
         }}
         animate={{ rotate: 360 }}
         transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
       />
-      <div className="relative w-20 h-20 rounded-2xl bg-white flex items-center justify-center border border-gray-100">
+      <div className="relative w-20 h-20 rounded-2xl bg-brand-dark flex items-center justify-center border border-white/5">
         <Icon
-          className="w-9 h-9"
-          style={{ color: "#009FD4", filter: "drop-shadow(0 0 8px rgba(0,159,212,0.4))" }}
+          className="w-9 h-9 text-brand-primary"
+          style={{ filter: "drop-shadow(0 0 10px #0F62FE)" }}
         />
       </div>
-      <div
-        className="absolute -top-2.5 -right-2.5 w-6 h-6 rounded-full bg-white border flex items-center justify-center"
-        style={{ borderColor: "#009FD4" }}
-      >
-        <span className="text-[9px] font-bold font-mono" style={{ color: "#009FD4" }}>{n}</span>
+      <div className="absolute -top-2.5 -right-2.5 w-6 h-6 rounded-full bg-brand-dark border border-brand-primary/60 flex items-center justify-center">
+        <span className="text-[9px] font-bold text-brand-primary font-mono">{n}</span>
       </div>
     </div>
   )
@@ -98,12 +95,12 @@ function AnimatedBorder({ children }) {
         className="absolute inset-0"
         style={{
           background:
-            "conic-gradient(from 0deg, #009FD4, #FF6B35, #009FD488, transparent, #009FD4)",
+            "conic-gradient(from 0deg, #0F62FE, #6929C4, #0F62FE88, transparent, #0F62FE)",
         }}
         animate={{ rotate: 360 }}
         transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
       />
-      <div className="relative bg-white rounded-[14px] h-full">{children}</div>
+      <div className="relative bg-[#0d0d1a] rounded-[14px] h-full">{children}</div>
     </div>
   )
 }
@@ -343,11 +340,11 @@ const staggerItem = {
 function SectionLabel({ children }) {
   return (
     <div className="flex items-center justify-center gap-3 mb-3">
-      <div className="h-px w-10" style={{ background: "linear-gradient(to right, transparent, #009FD4)" }} />
-      <span className="text-[10px] uppercase tracking-[0.25em] font-mono" style={{ color: "#009FD4" }}>
+      <div className="h-px w-10 bg-gradient-to-r from-transparent to-brand-primary/60" />
+      <span className="text-[10px] text-brand-primary uppercase tracking-[0.25em] font-mono">
         {children}
       </span>
-      <div className="h-px w-10" style={{ background: "linear-gradient(to left, transparent, #009FD4)" }} />
+      <div className="h-px w-10 bg-gradient-to-l from-transparent to-brand-primary/60" />
     </div>
   )
 }
@@ -381,20 +378,16 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-white font-sans" style={{ color: "#1A2B4A" }}>
+    <div className="min-h-screen bg-brand-dark text-white font-sans">
 
       {/* ── NAV ──────────────────────────────────────────────────────────── */}
       <motion.nav
         animate={{ y: navHidden ? "-100%" : "0%" }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200"
-        style={{ boxShadow: "0 1px 12px rgba(0,0,0,0.06)" }}
+        className="fixed top-0 left-0 right-0 z-50 bg-brand-dark/80 backdrop-blur-md border-b border-white/10"
       >
         <div className="max-w-5xl mx-auto flex items-center justify-between px-4 py-3">
-          <span
-            className="font-extrabold text-lg tracking-tight select-none"
-            style={{ background: "linear-gradient(90deg, #009FD4, #FF6B35)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}
-          >
+          <span className="font-bold text-lg bg-gradient-to-r from-brand-primary to-brand-accent bg-clip-text text-transparent select-none tracking-tight">
             AutomatIQ
           </span>
           <div className="hidden md:flex items-center gap-6">
@@ -402,7 +395,7 @@ export default function App() {
               <button
                 key={link.href}
                 onClick={() => scrollTo(link.href)}
-                className="text-sm text-gray-500 hover:text-gray-900 transition-colors font-mono"
+                className="text-sm text-brand-muted hover:text-white transition-colors font-mono"
               >
                 {link.label}
               </button>
@@ -415,18 +408,17 @@ export default function App() {
                 onClick={() => setLang(l)}
                 className={`text-xs px-2.5 py-1 rounded-full border transition-colors font-mono ${
                   lang === l
-                    ? "border-brand-primary/50 text-brand-primary"
-                    : "text-gray-400 border-gray-200 hover:border-gray-300 hover:text-gray-600"
+                    ? "bg-brand-primary/20 text-brand-primary border-brand-primary/50"
+                    : "text-brand-muted border-white/10 hover:border-white/25 hover:text-gray-300"
                 }`}
-                style={lang === l ? { background: "rgba(0,159,212,0.08)" } : {}}
               >
                 {l.toUpperCase()}
               </button>
             ))}
             <button
               onClick={() => scrollTo("diagnosis")}
-              className="hidden sm:block text-white text-sm px-4 py-1.5 rounded-full font-semibold hover:opacity-90 transition-opacity"
-              style={{ background: "#009FD4", boxShadow: "0 0 16px rgba(0,159,212,0.35)" }}
+              className="hidden sm:block bg-brand-primary text-white text-sm px-4 py-1.5 rounded-lg font-semibold hover:bg-blue-600 transition-colors"
+              style={{ boxShadow: "0 0 20px rgba(15,98,254,0.4)" }}
             >
               {c.nav_cta}
             </button>
@@ -436,26 +428,22 @@ export default function App() {
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section className="relative px-4 pt-32 pb-24 sm:pt-44 sm:pb-32 overflow-hidden">
-        {/* Light gradient background */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: "linear-gradient(135deg, #E6F7FC 0%, #F8F9FA 55%, #FFF2EC 100%)" }}
+        {/* Moving grid */}
+        <motion.div
+          className="absolute inset-0 bg-grid pointer-events-none opacity-40"
+          animate={{ backgroundPosition: ["0px 0px", "50px 50px"] }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
         />
-
-        {/* Subtle grid overlay */}
-        <div className="absolute inset-0 bg-grid pointer-events-none opacity-60" />
 
         {/* Animated gradient orbs */}
         <motion.div
-          className="absolute top-1/3 left-1/4 w-[600px] h-[600px] rounded-full pointer-events-none"
-          style={{ background: "rgba(0,159,212,0.12)", filter: "blur(100px)" }}
-          animate={{ scale: [1, 1.15, 1], opacity: [0.8, 1, 0.8] }}
+          className="absolute top-1/3 left-1/4 w-[600px] h-[600px] rounded-full bg-brand-primary/20 blur-[120px] pointer-events-none"
+          animate={{ scale: [1, 1.15, 1], opacity: [0.15, 0.28, 0.15] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full pointer-events-none"
-          style={{ background: "rgba(255,107,53,0.10)", filter: "blur(100px)" }}
-          animate={{ scale: [1, 1.2, 1], opacity: [0.8, 1, 0.8] }}
+          className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-brand-accent/20 blur-[120px] pointer-events-none"
+          animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.3, 0.15] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
         />
 
@@ -469,7 +457,7 @@ export default function App() {
             className="absolute top-0 bottom-0 w-px pointer-events-none"
             style={{
               left: `${x}%`,
-              background: "linear-gradient(180deg, transparent, rgba(0,159,212,0.10), transparent)",
+              background: "linear-gradient(180deg, transparent, rgba(15,98,254,0.15), transparent)",
             }}
             animate={{ opacity: [0, 0.8, 0] }}
             transition={{ duration: 4, delay: i * 1.3, repeat: Infinity, ease: "easeInOut" }}
@@ -482,12 +470,10 @@ export default function App() {
             initial={{ opacity: 0, y: shouldReduce ? 0 : 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs mb-8 font-mono font-semibold"
-            style={{ background: "rgba(0,159,212,0.10)", border: "1px solid rgba(0,159,212,0.30)", color: "#009FD4" }}
+            className="inline-flex items-center gap-2 border border-brand-primary/40 rounded-full px-4 py-1.5 text-xs text-brand-primary mb-8 bg-brand-primary/10 font-mono"
           >
             <motion.span
-              className="w-1.5 h-1.5 rounded-full"
-              style={{ background: "#009FD4" }}
+              className="w-1.5 h-1.5 rounded-full bg-brand-primary"
               animate={{ opacity: [1, 0.2, 1], scale: [1, 0.8, 1] }}
               transition={{ duration: 1.5, repeat: Infinity }}
             />
@@ -495,24 +481,16 @@ export default function App() {
           </motion.div>
 
           {/* Animated title word-by-word */}
-          <h1 className="text-4xl sm:text-6xl font-extrabold leading-tight mb-6" style={{ color: "#1A2B4A" }}>
+          <h1 className="text-4xl sm:text-6xl font-bold leading-tight mb-6">
             <motion.span
+              className="bg-gradient-to-r from-brand-primary via-blue-400 to-brand-accent bg-clip-text text-transparent"
               style={{ display: "inline-flex", flexWrap: "wrap", justifyContent: "center", gap: "0 0.3em" }}
               variants={staggerContainer}
               initial="hidden"
               animate="visible"
             >
               {c.hero_title.split(" ").map((word, i) => (
-                <motion.span
-                  key={i}
-                  variants={wordItem}
-                  style={{
-                    display: "inline-block",
-                    background: i % 3 === 0 ? "linear-gradient(90deg, #1A2B4A, #009FD4)" : "none",
-                    WebkitBackgroundClip: i % 3 === 0 ? "text" : "unset",
-                    WebkitTextFillColor: i % 3 === 0 ? "transparent" : "#1A2B4A",
-                  }}
-                >
+                <motion.span key={i} variants={wordItem} style={{ display: "inline-block" }}>
                   {word}
                 </motion.span>
               ))}
@@ -524,7 +502,7 @@ export default function App() {
             initial={{ opacity: 0, y: shouldReduce ? 0 : 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.55 }}
-            className="text-lg text-gray-500 mb-10 max-w-xl mx-auto leading-relaxed"
+            className="text-lg text-gray-400 mb-10 max-w-xl mx-auto leading-relaxed"
           >
             {c.hero_sub}
           </motion.p>
@@ -536,24 +514,24 @@ export default function App() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.7 }}
             className="flex flex-col sm:flex-row gap-3 justify-center"
           >
+            {/* Primary CTA with pulse ring */}
             <div className="relative inline-flex">
               <motion.div
-                className="absolute inset-0 rounded-full"
-                style={{ background: "#009FD4" }}
-                animate={{ scale: [1, 1.18, 1], opacity: [0.4, 0, 0.4] }}
+                className="absolute inset-0 rounded-xl bg-brand-primary"
+                animate={{ scale: [1, 1.18, 1], opacity: [0.5, 0, 0.5] }}
                 transition={{ duration: 2.5, repeat: Infinity, ease: "easeOut" }}
               />
               <button
                 onClick={() => scrollTo("diagnosis")}
-                className="relative text-white px-7 py-3 rounded-full font-bold hover:opacity-90 transition-opacity text-sm"
-                style={{ background: "#009FD4", boxShadow: "0 4px 24px rgba(0,159,212,0.40)" }}
+                className="relative bg-brand-primary text-white px-7 py-3 rounded-xl font-bold hover:bg-blue-600 transition-colors text-sm"
+                style={{ boxShadow: "0 0 30px rgba(15,98,254,0.45)" }}
               >
                 {c.hero_cta} →
               </button>
             </div>
             <button
               onClick={() => scrollTo("cases")}
-              className="border border-gray-300 text-gray-600 px-7 py-3 rounded-full font-semibold hover:border-gray-400 hover:text-gray-800 transition-colors text-sm"
+              className="border border-white/15 text-gray-300 px-7 py-3 rounded-xl font-semibold hover:border-white/30 hover:text-white transition-colors text-sm backdrop-blur-sm"
             >
               {c.hero_cta2}
             </button>
@@ -567,20 +545,20 @@ export default function App() {
             className="mt-12 max-w-md mx-auto"
           >
             <div
-              className="bg-white border border-gray-200 rounded-xl overflow-hidden"
-              style={{ boxShadow: "0 8px 32px rgba(0,159,212,0.10), 0 2px 8px rgba(0,0,0,0.05)" }}
+              className="bg-brand-surface/70 border border-white/10 rounded-xl overflow-hidden backdrop-blur-sm"
+              style={{ boxShadow: "0 0 40px rgba(15,98,254,0.08)" }}
             >
-              <div className="flex items-center gap-2 px-4 py-2.5 border-b border-gray-100 bg-gray-50">
+              <div className="flex items-center gap-2 px-4 py-2.5 border-b border-white/5 bg-white/3">
                 <div className="flex gap-1.5">
-                  <div className="w-2.5 h-2.5 rounded-full bg-red-300" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-300" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-red-500/50" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/50" />
                   <motion.div
-                    className="w-2.5 h-2.5 rounded-full bg-green-400"
+                    className="w-2.5 h-2.5 rounded-full bg-green-500"
                     animate={{ opacity: [1, 0.4, 1] }}
                     transition={{ duration: 1.5, repeat: Infinity }}
                   />
                 </div>
-                <span className="text-[10px] text-gray-400 font-mono ml-2 tracking-wider">
+                <span className="text-[10px] text-brand-muted font-mono ml-2 tracking-wider">
                   automatiq.live
                 </span>
               </div>
@@ -594,14 +572,14 @@ export default function App() {
                     className="flex items-center gap-2"
                   >
                     <motion.span
-                      className="text-green-500 text-[10px]"
+                      className="text-green-400 text-[10px]"
                       animate={{ opacity: [1, 0.3, 1] }}
                       transition={{ duration: 2, delay: i * 0.7, repeat: Infinity }}
                     >
                       ▶
                     </motion.span>
-                    <span className="text-gray-700">{a.text}</span>
-                    <span className="ml-auto" style={{ color: "#009FD4" }}>{a.status}</span>
+                    <span className="text-gray-300">{a.text}</span>
+                    <span className="ml-auto text-brand-primary/80">{a.status}</span>
                   </motion.div>
                 ))}
               </div>
@@ -613,17 +591,16 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.8 }}
-            className="flex justify-center gap-8 sm:gap-14 mt-10 pt-8 border-t border-gray-200"
+            className="flex justify-center gap-8 sm:gap-14 mt-10 pt-8 border-t border-white/8"
           >
             {c.stats.map((stat, i) => (
               <div key={i} className="text-center">
                 <div
-                  className="text-xl sm:text-2xl font-black font-mono"
-                  style={{ background: "linear-gradient(90deg, #009FD4, #FF6B35)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}
+                  className="text-xl sm:text-2xl font-bold font-mono bg-gradient-to-r from-brand-primary to-brand-accent bg-clip-text text-transparent"
                 >
                   {stat.value}
                 </div>
-                <div className="text-[10px] text-gray-400 mt-1 tracking-wide">{stat.label}</div>
+                <div className="text-[10px] text-brand-muted mt-1 tracking-wide">{stat.label}</div>
               </div>
             ))}
           </motion.div>
@@ -631,7 +608,8 @@ export default function App() {
       </section>
 
       {/* ── PROBLEMS ─────────────────────────────────────────────────────── */}
-      <section className="px-4 py-16 relative overflow-hidden" style={{ background: "#F8F9FA" }}>
+      <section className="px-4 py-16 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-surface/30 to-transparent pointer-events-none" />
         <div className="max-w-4xl mx-auto relative">
           <motion.div
             variants={fadeUp}
@@ -640,7 +618,7 @@ export default function App() {
             viewport={{ once: true, margin: "-100px" }}
             className="text-center mb-10"
           >
-            <h2 className="text-2xl sm:text-3xl font-extrabold" style={{ color: "#1A2B4A" }}>{c.problems_title}</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold">{c.problems_title}</h2>
           </motion.div>
           <motion.div
             variants={staggerContainer}
@@ -653,17 +631,18 @@ export default function App() {
               <motion.div
                 key={i}
                 variants={staggerItem}
-                whileHover={{ y: -6, boxShadow: "0 20px 40px rgba(0,0,0,0.08)" }}
+                whileHover={{ y: -6, boxShadow: "0 24px 48px rgba(15,98,254,0.15)" }}
                 transition={{ duration: 0.2 }}
-                className="relative bg-white border border-gray-200 rounded-2xl p-6 overflow-hidden group"
-                style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04)" }}
+                className="relative bg-brand-surface border border-white/8 rounded-xl p-6 overflow-hidden group"
               >
-                <div className="absolute top-0 left-0 w-6 h-6 border-t border-l rounded-tl-2xl" style={{ borderColor: "rgba(0,159,212,0.25)" }} />
-                <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r rounded-br-2xl" style={{ borderColor: "rgba(0,159,212,0.25)" }} />
-                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(0,159,212,0.03), transparent)" }} />
+                {/* Corner accents */}
+                <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-brand-primary/30 rounded-tl-xl" />
+                <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-brand-primary/30 rounded-br-xl" />
+                {/* Hover glow */}
+                <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
                 <div className="text-3xl mb-3">{p.icon}</div>
-                <h3 className="font-bold mb-2" style={{ color: "#1A2B4A" }}>{p.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{p.text}</p>
+                <h3 className="font-semibold mb-2 text-white">{p.title}</h3>
+                <p className="text-sm text-gray-400 leading-relaxed">{p.text}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -671,11 +650,8 @@ export default function App() {
       </section>
 
       {/* ── HOW IT WORKS ─────────────────────────────────────────────────── */}
-      <section id="how" className="px-4 py-20 relative overflow-hidden bg-white">
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: "linear-gradient(135deg, rgba(0,159,212,0.04) 0%, transparent 50%, rgba(255,107,53,0.04) 100%)" }}
-        />
+      <section id="how" className="px-4 py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/5 via-transparent to-brand-accent/5 pointer-events-none" />
         <div className="max-w-4xl mx-auto relative">
           <motion.div
             variants={fadeUp}
@@ -685,7 +661,7 @@ export default function App() {
             className="text-center mb-16"
           >
             <SectionLabel>{c.how_label}</SectionLabel>
-            <h2 className="text-2xl sm:text-3xl font-extrabold" style={{ color: "#1A2B4A" }}>{c.how_title}</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold">{c.how_title}</h2>
           </motion.div>
           <motion.div
             variants={staggerContainer}
@@ -698,21 +674,25 @@ export default function App() {
               <motion.div
                 key={i}
                 variants={staggerItem}
-                whileHover={{ y: -6, boxShadow: "0 20px 48px rgba(0,159,212,0.12)" }}
+                whileHover={{ y: -6, boxShadow: "0 24px 48px rgba(15,98,254,0.2)" }}
                 transition={{ duration: 0.2 }}
-                className="relative bg-white border border-gray-200 rounded-2xl p-8 text-center overflow-hidden group"
-                style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04)" }}
+                className="relative bg-brand-surface border border-white/8 rounded-2xl p-8 text-center overflow-hidden group"
               >
-                <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(0,159,212,0.50), transparent)" }} />
-                <div className="absolute top-0 left-0 w-6 h-6 border-t border-l rounded-tl-2xl" style={{ borderColor: "rgba(0,159,212,0.35)" }} />
-                <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r rounded-br-2xl" style={{ borderColor: "rgba(0,159,212,0.35)" }} />
-                <div className="absolute -bottom-4 -right-2 text-8xl font-black font-mono select-none" style={{ color: "rgba(0,0,0,0.03)" }}>
+                {/* Top gradient accent */}
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-primary/60 to-transparent" />
+                {/* Corner accents */}
+                <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-brand-primary/40 rounded-tl-2xl" />
+                <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-brand-primary/40 rounded-br-2xl" />
+                {/* Background large number */}
+                <div className="absolute -bottom-4 -right-2 text-8xl font-black text-white/[0.03] select-none font-mono">
                   {s.n}
                 </div>
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(0,159,212,0.04), transparent)" }} />
+                {/* Hover glow */}
+                <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/8 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+
                 <GlowingStepIcon Icon={s.Icon} n={s.n} />
-                <h3 className="font-bold mb-3 text-base" style={{ color: "#1A2B4A" }}>{s.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{s.text}</p>
+                <h3 className="font-bold text-white mb-3 text-base">{s.title}</h3>
+                <p className="text-sm text-gray-400 leading-relaxed">{s.text}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -720,7 +700,7 @@ export default function App() {
       </section>
 
       {/* ── DEMO ─────────────────────────────────────────────────────────── */}
-      <section className="px-4 py-16" style={{ background: "#F8F9FA" }}>
+      <section className="px-4 py-16">
         <div className="max-w-3xl mx-auto text-center">
           <motion.div
             variants={fadeUp}
@@ -728,9 +708,9 @@ export default function App() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
           >
-            <p className="text-xs text-gray-400 uppercase tracking-widest mb-2 font-mono">Live demo</p>
-            <h2 className="text-2xl font-extrabold mb-2" style={{ color: "#1A2B4A" }}>{c.demo_title}</h2>
-            <p className="text-gray-400 text-sm mb-12">{c.demo_sub}</p>
+            <p className="text-xs text-brand-muted uppercase tracking-widest mb-2 font-mono">Live demo</p>
+            <h2 className="text-2xl font-bold mb-2">{c.demo_title}</h2>
+            <p className="text-gray-500 text-sm mb-12">{c.demo_sub}</p>
           </motion.div>
           <motion.div
             variants={staggerContainer}
@@ -741,7 +721,7 @@ export default function App() {
           >
             {/* Telegram */}
             <motion.a variants={staggerItem} href="/demo-telegram" className="group flex flex-col items-center gap-5">
-              <div className="w-52 rounded-[2.4rem] border-[5px] border-gray-200 bg-gray-900 overflow-hidden shadow-xl group-hover:shadow-sky-200 group-hover:scale-105 transition-all duration-300" style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.08)" }}>
+              <div className="w-52 rounded-[2.4rem] border-[5px] border-gray-700 bg-gray-900 overflow-hidden shadow-2xl shadow-sky-500/10 group-hover:shadow-sky-500/40 group-hover:scale-105 transition-all duration-300">
                 <div className="bg-gray-900 h-6 flex justify-center items-end pb-1">
                   <div className="w-16 h-3.5 bg-gray-800 rounded-full" />
                 </div>
@@ -770,14 +750,14 @@ export default function App() {
                   <div className="w-20 h-1 bg-gray-600 rounded-full" />
                 </div>
               </div>
-              <div className="inline-flex items-center gap-2 bg-sky-50 border border-sky-200 text-sky-600 px-5 py-2.5 rounded-xl text-sm font-semibold group-hover:bg-sky-100 group-hover:border-sky-300 transition-all">
+              <div className="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/30 text-sky-400 px-5 py-2.5 rounded-xl text-sm font-semibold group-hover:bg-sky-500/20 group-hover:border-sky-500/60 transition-all">
                 🤖 {c.demo_try_tg}
               </div>
             </motion.a>
 
             {/* WhatsApp */}
             <motion.a variants={staggerItem} href="/demo-whatsapp" className="group flex flex-col items-center gap-5">
-              <div className="w-52 rounded-[2.4rem] border-[5px] border-gray-200 bg-gray-900 overflow-hidden shadow-xl group-hover:shadow-green-200 group-hover:scale-105 transition-all duration-300" style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.08)" }}>
+              <div className="w-52 rounded-[2.4rem] border-[5px] border-gray-700 bg-gray-900 overflow-hidden shadow-2xl shadow-green-500/10 group-hover:shadow-green-500/40 group-hover:scale-105 transition-all duration-300">
                 <div className="bg-gray-900 h-6 flex justify-center items-end pb-1">
                   <div className="w-16 h-3.5 bg-gray-800 rounded-full" />
                 </div>
@@ -806,7 +786,7 @@ export default function App() {
                   <div className="w-20 h-1 bg-gray-500 rounded-full" />
                 </div>
               </div>
-              <div className="inline-flex items-center gap-2 bg-green-50 border border-green-200 text-green-700 px-5 py-2.5 rounded-xl text-sm font-semibold group-hover:bg-green-100 group-hover:border-green-300 transition-all">
+              <div className="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 text-green-400 px-5 py-2.5 rounded-xl text-sm font-semibold group-hover:bg-green-500/20 group-hover:border-green-500/60 transition-all">
                 💬 {c.demo_try_wa}
               </div>
             </motion.a>
@@ -815,11 +795,8 @@ export default function App() {
       </section>
 
       {/* ── PRICING ──────────────────────────────────────────────────────── */}
-      <section id="pricing" className="px-4 py-20 relative overflow-hidden bg-white">
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: "linear-gradient(180deg, transparent, rgba(0,159,212,0.04), transparent)" }}
-        />
+      <section id="pricing" className="px-4 py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-primary/5 to-transparent pointer-events-none" />
         <div className="max-w-4xl mx-auto relative">
           <motion.div
             variants={fadeUp}
@@ -829,7 +806,7 @@ export default function App() {
             className="text-center mb-12"
           >
             <SectionLabel>{c.packages_label}</SectionLabel>
-            <h2 className="text-2xl sm:text-3xl font-extrabold" style={{ color: "#1A2B4A" }}>{c.packages_title}</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold">{c.packages_title}</h2>
           </motion.div>
           <motion.div
             variants={staggerContainer}
@@ -840,43 +817,41 @@ export default function App() {
           >
             {c.packages.map((pkg, i) => {
               const card = (
-                <div className="relative flex flex-col p-6 h-full">
+                <div className={`relative flex flex-col p-6 h-full ${pkg.highlight ? "" : ""}`}>
                   {pkg.badge && (
                     <div
-                      className="absolute -top-3 left-1/2 -translate-x-1/2 text-white text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap"
-                      style={{ background: "#009FD4", boxShadow: "0 0 16px rgba(0,159,212,0.45)" }}
+                      className="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-primary text-white text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap"
+                      style={{ boxShadow: "0 0 20px rgba(15,98,254,0.6)" }}
                     >
                       {pkg.badge}
                     </div>
                   )}
+                  {/* Corner accents for non-highlighted */}
                   {!pkg.highlight && (
                     <>
-                      <div className="absolute top-0 left-0 w-5 h-5 border-t border-l border-gray-200 rounded-tl-2xl" />
-                      <div className="absolute bottom-0 right-0 w-5 h-5 border-b border-r border-gray-200 rounded-br-2xl" />
+                      <div className="absolute top-0 left-0 w-5 h-5 border-t border-l border-white/15 rounded-tl-2xl" />
+                      <div className="absolute bottom-0 right-0 w-5 h-5 border-b border-r border-white/15 rounded-br-2xl" />
                     </>
                   )}
                   <div className="mb-5">
-                    <div className="text-xs font-bold text-gray-400 mb-1 font-mono tracking-widest uppercase">{pkg.name}</div>
+                    <div className="text-xs font-bold text-brand-muted mb-1 font-mono tracking-widest uppercase">{pkg.name}</div>
                     <div className="flex items-baseline gap-1">
                       <span
                         className="text-3xl font-black"
-                        style={{
-                          color: pkg.highlight ? "#009FD4" : "#1A2B4A",
-                          ...(pkg.highlight ? { filter: "drop-shadow(0 0 8px rgba(0,159,212,0.3))" } : {}),
-                        }}
+                        style={pkg.highlight ? { filter: "drop-shadow(0 0 10px rgba(15,98,254,0.5))" } : {}}
                       >
                         {pkg.price}
                       </span>
-                      <span className="text-sm text-gray-400 font-mono">/ {pkg.period}</span>
+                      <span className="text-sm text-brand-muted font-mono">/ {pkg.period}</span>
                     </div>
-                    <p className="text-sm text-gray-500 mt-2">{pkg.desc}</p>
+                    <p className="text-sm text-gray-400 mt-2">{pkg.desc}</p>
                   </div>
                   <ul className="space-y-2.5 mb-6 flex-1">
                     {pkg.features.map((f, j) => (
-                      <li key={j} className="flex items-start gap-2 text-sm text-gray-600">
+                      <li key={j} className="flex items-start gap-2 text-sm text-gray-300">
                         <Check
                           className="w-4 h-4 mt-0.5 flex-shrink-0"
-                          style={{ color: pkg.highlight ? "#009FD4" : "#FF6B35" }}
+                          style={{ color: pkg.highlight ? "#0F62FE" : "#6929C4" }}
                         />
                         {f}
                       </li>
@@ -884,12 +859,12 @@ export default function App() {
                   </ul>
                   <button
                     onClick={() => scrollTo("diagnosis")}
-                    className={`w-full py-2.5 rounded-full font-semibold text-sm transition-all ${
+                    className={`w-full py-2.5 rounded-xl font-semibold text-sm transition-all ${
                       pkg.highlight
-                        ? "text-white hover:opacity-90"
-                        : "border border-gray-300 text-gray-600 hover:border-gray-400 hover:text-gray-800"
+                        ? "bg-brand-primary text-white hover:bg-blue-600"
+                        : "border border-white/15 text-gray-300 hover:border-white/30 hover:text-white"
                     }`}
-                    style={pkg.highlight ? { background: "#009FD4", boxShadow: "0 4px 16px rgba(0,159,212,0.35)" } : {}}
+                    style={pkg.highlight ? { boxShadow: "0 0 20px rgba(15,98,254,0.4)" } : {}}
                   >
                     {pkg.cta} →
                   </button>
@@ -908,10 +883,9 @@ export default function App() {
                 <motion.div
                   key={i}
                   variants={staggerItem}
-                  whileHover={{ y: -4, boxShadow: "0 20px 40px rgba(0,0,0,0.07)" }}
+                  whileHover={{ y: -4, boxShadow: "0 24px 48px rgba(0,0,0,0.4)" }}
                   transition={{ duration: 0.2 }}
-                  className="relative bg-white border border-gray-200 rounded-2xl overflow-hidden"
-                  style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04)" }}
+                  className="relative bg-brand-surface border border-white/8 rounded-2xl overflow-hidden"
                 >
                   {card}
                 </motion.div>
@@ -922,7 +896,7 @@ export default function App() {
       </section>
 
       {/* ── TESTIMONIAL ──────────────────────────────────────────────────── */}
-      <section id="testimonial" className="px-4 py-16" style={{ background: "#F8F9FA" }}>
+      <section id="testimonial" className="px-4 py-16">
         <div className="max-w-2xl mx-auto">
           <motion.div
             variants={fadeUp}
@@ -931,43 +905,38 @@ export default function App() {
             viewport={{ once: true, margin: "-100px" }}
             whileHover={{ y: -4 }}
             transition={{ duration: 0.2 }}
-            className="relative bg-white border border-gray-200 rounded-2xl p-8 overflow-hidden"
-            style={{ boxShadow: "0 8px 40px rgba(0,159,212,0.08)" }}
+            className="relative bg-brand-surface border border-white/10 rounded-2xl p-8 overflow-hidden"
+            style={{ boxShadow: "0 0 60px rgba(105,41,196,0.1)" }}
           >
             {/* Top line accent */}
-            <div
-              className="absolute top-0 left-0 right-0 h-0.5 rounded-t-2xl"
-              style={{ background: "linear-gradient(90deg, #009FD4, #FF6B35, #009FD4)" }}
-            />
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-brand-primary/60 via-brand-accent/60 to-brand-primary/60" />
             {/* Ambient glow */}
-            <div
-              className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl pointer-events-none"
-              style={{ background: "rgba(255,107,53,0.06)" }}
-            />
-            <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 rounded-tl-2xl" style={{ borderColor: "rgba(255,107,53,0.30)" }} />
-            <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 rounded-br-2xl" style={{ borderColor: "rgba(0,159,212,0.30)" }} />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-brand-accent/10 rounded-full blur-3xl pointer-events-none" />
+            {/* Corner accents */}
+            <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-brand-accent/40 rounded-tl-2xl" />
+            <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-brand-primary/40 rounded-br-2xl" />
 
             <div className="flex gap-0.5 mb-5">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
               ))}
             </div>
 
-            <p className="text-gray-600 leading-relaxed text-base mb-6 relative">
-              <span className="text-4xl font-serif leading-none mr-1 opacity-40" style={{ color: "#FF6B35" }}>"</span>
+            <p className="text-gray-300 leading-relaxed text-base mb-6 relative">
+              <span className="text-brand-accent text-4xl font-serif leading-none mr-1 opacity-60">"</span>
               {c.testimonial.quote}
             </p>
 
             <div className="flex items-center gap-3">
               <div
-                className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-white flex-shrink-0"
-                style={{ background: "#009FD4", boxShadow: "0 0 12px rgba(0,159,212,0.30)" }}
+                className="w-10 h-10 rounded-full bg-brand-primary/20 border border-brand-primary/40 flex items-center justify-center text-sm font-bold text-brand-primary flex-shrink-0"
+                style={{ boxShadow: "0 0 15px rgba(15,98,254,0.3)" }}
               >
                 {c.testimonial.name.charAt(0)}
               </div>
               <div>
-                <div className="font-semibold text-sm" style={{ color: "#1A2B4A" }}>{c.testimonial.name}</div>
-                <div className="text-xs text-gray-400">{c.testimonial.role} · {c.testimonial.company}</div>
+                <div className="font-semibold text-white text-sm">{c.testimonial.name}</div>
+                <div className="text-xs text-brand-muted">{c.testimonial.role} · {c.testimonial.company}</div>
               </div>
             </div>
           </motion.div>
@@ -975,7 +944,8 @@ export default function App() {
       </section>
 
       {/* ── CASES ────────────────────────────────────────────────────────── */}
-      <section id="cases" className="px-4 py-20 relative overflow-hidden bg-white">
+      <section id="cases" className="px-4 py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-surface/40 to-transparent pointer-events-none" />
         <div className="max-w-4xl mx-auto relative">
           <motion.div
             variants={fadeUp}
@@ -985,7 +955,7 @@ export default function App() {
             className="text-center mb-10"
           >
             <SectionLabel>{c.cases_label}</SectionLabel>
-            <h2 className="text-2xl sm:text-3xl font-extrabold" style={{ color: "#1A2B4A" }}>{c.cases_title}</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold">{c.cases_title}</h2>
           </motion.div>
           <motion.div
             variants={staggerContainer}
@@ -998,31 +968,30 @@ export default function App() {
               <motion.div
                 key={i}
                 variants={staggerItem}
-                whileHover={{ y: -6, boxShadow: "0 20px 40px rgba(0,0,0,0.08)" }}
+                whileHover={{ y: -6, boxShadow: "0 24px 48px rgba(15,98,254,0.12)" }}
                 transition={{ duration: 0.2 }}
-                className="relative bg-white border border-gray-200 rounded-xl p-5 overflow-hidden group"
-                style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04)" }}
+                className="relative bg-brand-surface border border-white/8 rounded-xl p-5 overflow-hidden group"
               >
-                <div
-                  className="absolute top-0 left-0 right-0 h-px"
-                  style={{ background: "linear-gradient(90deg, transparent, rgba(0,159,212,0.35), transparent)" }}
-                />
-                <div className="absolute top-0 left-0 w-5 h-5 border-t border-l rounded-tl-xl" style={{ borderColor: "rgba(0,159,212,0.25)" }} />
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(0,159,212,0.03), transparent)" }} />
-                <div className="text-xs font-bold mb-3 font-mono tracking-wide" style={{ color: "#009FD4" }}>{cs.sector}</div>
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-primary/40 to-transparent" />
+                <div className="absolute top-0 left-0 w-5 h-5 border-t border-l border-brand-primary/30 rounded-tl-xl" />
+                <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                <div className="text-xs font-bold text-brand-primary mb-3 font-mono tracking-wide">{cs.sector}</div>
                 <div className="mb-2.5">
-                  <div className="text-[10px] text-gray-400 mb-1 uppercase tracking-widest font-mono">
+                  <div className="text-[10px] text-brand-muted mb-1 uppercase tracking-widest font-mono">
                     {lang === "ru" ? "Проблема" : "Problem"}
                   </div>
-                  <p className="text-sm text-gray-600">{cs.problem}</p>
+                  <p className="text-sm text-gray-300">{cs.problem}</p>
                 </div>
                 <div className="mb-3">
-                  <div className="text-[10px] text-gray-400 mb-1 uppercase tracking-widest font-mono">
+                  <div className="text-[10px] text-brand-muted mb-1 uppercase tracking-widest font-mono">
                     {lang === "ru" ? "Решение" : "Solution"}
                   </div>
-                  <p className="text-sm text-gray-600">{cs.solution}</p>
+                  <p className="text-sm text-gray-300">{cs.solution}</p>
                 </div>
-                <div className="bg-green-50 border border-green-200 rounded-lg px-3 py-2 text-xs text-green-700 font-medium font-mono">
+                <div
+                  className="bg-green-500/10 border border-green-500/25 rounded-lg px-3 py-2 text-xs text-green-400 font-medium font-mono"
+                  style={{ boxShadow: "inset 0 0 12px rgba(34,197,94,0.05)" }}
+                >
                   ↑ {cs.result}
                 </div>
               </motion.div>
@@ -1032,7 +1001,7 @@ export default function App() {
       </section>
 
       {/* ── DIAGNOSTIC BOT ───────────────────────────────────────────────── */}
-      <section id="diagnosis" className="px-4 py-16" style={{ background: "#F8F9FA" }}>
+      <section id="diagnosis" className="px-4 py-16">
         <div className="max-w-lg mx-auto">
           <motion.div
             variants={fadeUp}
@@ -1041,8 +1010,8 @@ export default function App() {
             viewport={{ once: true, margin: "-100px" }}
             className="text-center mb-8"
           >
-            <h2 className="text-2xl sm:text-3xl font-extrabold mb-2" style={{ color: "#1A2B4A" }}>{c.diag_title}</h2>
-            <p className="text-gray-500 text-sm">{c.diag_sub}</p>
+            <h2 className="text-2xl sm:text-3xl font-bold mb-2">{c.diag_title}</h2>
+            <p className="text-gray-400 text-sm">{c.diag_sub}</p>
           </motion.div>
           <motion.div
             variants={fadeUp}
@@ -1050,14 +1019,14 @@ export default function App() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             className="relative rounded-2xl overflow-hidden"
-            style={{ boxShadow: "0 8px 32px rgba(0,159,212,0.10), 0 2px 8px rgba(0,0,0,0.05)" }}
+            style={{ boxShadow: "0 0 60px rgba(15,98,254,0.1)" }}
           >
-            <div className="absolute inset-0 rounded-2xl pointer-events-none" style={{ boxShadow: "inset 0 0 0 1px rgba(0,0,0,0.06)" }} />
-            <div className="bg-white">
+            <div className="absolute inset-0 rounded-2xl pointer-events-none" style={{ boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.08)" }} />
+            <div className="bg-brand-surface">
               <DiagnosticBot
                 lang={lang}
                 apiBase={import.meta.env.VITE_API_BASE || "http://localhost:8000"}
-                darkMode={false}
+                darkMode={true}
               />
             </div>
           </motion.div>
@@ -1065,11 +1034,8 @@ export default function App() {
       </section>
 
       {/* ── ABOUT ────────────────────────────────────────────────────────── */}
-      <section className="px-4 py-16 relative overflow-hidden bg-white">
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: "linear-gradient(180deg, rgba(0,159,212,0.03), transparent)" }}
-        />
+      <section className="px-4 py-16 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-surface/30 to-transparent pointer-events-none" />
         <div className="max-w-3xl mx-auto flex flex-col sm:flex-row gap-8 items-center relative">
           <motion.div
             variants={fadeUp}
@@ -1079,13 +1045,13 @@ export default function App() {
             className="relative flex-shrink-0"
           >
             <div
-              className="absolute inset-0 rounded-full blur-xl scale-125"
-              style={{ background: "rgba(0,159,212,0.20)", animation: "pulse 3s ease-in-out infinite" }}
+              className="absolute inset-0 rounded-full bg-brand-primary/30 blur-xl scale-125"
+              style={{ animation: "pulse 3s ease-in-out infinite" }}
             />
             <img
               src="/photo.jpg"
-              className="relative w-24 h-24 rounded-full object-cover ring-2"
-              style={{ boxShadow: "0 0 24px rgba(0,159,212,0.25)", ringColor: "rgba(0,159,212,0.40)" }}
+              className="relative w-24 h-24 rounded-full object-cover ring-2 ring-brand-primary/50"
+              style={{ boxShadow: "0 0 30px rgba(15,98,254,0.3)" }}
               alt="Photo"
             />
           </motion.div>
@@ -1095,14 +1061,13 @@ export default function App() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
           >
-            <h2 className="text-2xl font-extrabold mb-3" style={{ color: "#1A2B4A" }}>{c.about_title}</h2>
-            <p className="text-gray-500 leading-relaxed mb-4">{c.about_text}</p>
+            <h2 className="text-2xl font-bold mb-3">{c.about_title}</h2>
+            <p className="text-gray-400 leading-relaxed mb-4">{c.about_text}</p>
             <div className="flex flex-wrap gap-2">
               {c.about_items.map((item, i) => (
                 <span
                   key={i}
-                  className="text-xs font-semibold px-3 py-1 rounded-full font-mono"
-                  style={{ background: "rgba(0,159,212,0.08)", color: "#009FD4", border: "1px solid rgba(0,159,212,0.22)" }}
+                  className="bg-brand-primary/10 text-brand-primary border border-brand-primary/25 text-xs font-medium px-3 py-1 rounded-full font-mono"
                 >
                   ✓ {item}
                 </span>
@@ -1113,11 +1078,8 @@ export default function App() {
       </section>
 
       {/* ── FAQ ──────────────────────────────────────────────────────────── */}
-      <section id="faq" className="px-4 py-16 relative overflow-hidden" style={{ background: "#F8F9FA" }}>
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: "linear-gradient(135deg, rgba(255,107,53,0.03), transparent, rgba(0,159,212,0.03))" }}
-        />
+      <section id="faq" className="px-4 py-16 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-accent/5 via-transparent to-brand-primary/5 pointer-events-none" />
         <div className="max-w-2xl mx-auto relative">
           <motion.div
             variants={fadeUp}
@@ -1127,7 +1089,7 @@ export default function App() {
             className="text-center mb-10"
           >
             <SectionLabel>{c.faq_label}</SectionLabel>
-            <h2 className="text-2xl sm:text-3xl font-extrabold" style={{ color: "#1A2B4A" }}>{c.faq_title}</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold">{c.faq_title}</h2>
           </motion.div>
           <motion.div
             variants={staggerContainer}
@@ -1140,15 +1102,14 @@ export default function App() {
               <motion.div
                 key={i}
                 variants={staggerItem}
-                className="relative bg-white border border-gray-200 rounded-xl overflow-hidden"
-                style={{ boxShadow: "0 1px 4px rgba(0,0,0,0.04)" }}
+                className="relative bg-brand-surface border border-white/8 rounded-xl overflow-hidden"
               >
-                <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(0,159,212,0.20), transparent)" }} />
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-gray-50 transition-colors"
+                  className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-white/4 transition-colors"
                 >
-                  <span className="font-semibold text-sm pr-4" style={{ color: "#1A2B4A" }}>{faqItem.q}</span>
+                  <span className="font-medium text-white text-sm pr-4">{faqItem.q}</span>
                   <motion.div
                     animate={{ rotate: openFaq === i ? 180 : 0 }}
                     transition={{ duration: 0.25 }}
@@ -1156,7 +1117,7 @@ export default function App() {
                   >
                     <ChevronDown
                       className="w-4 h-4"
-                      style={{ color: openFaq === i ? "#009FD4" : "#94A3B8" }}
+                      style={{ color: openFaq === i ? "#0F62FE" : "#8B8B9E" }}
                     />
                   </motion.div>
                 </button>
@@ -1170,7 +1131,7 @@ export default function App() {
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <p className="px-5 pt-1 pb-4 text-sm text-gray-500 leading-relaxed border-t border-gray-100">
+                      <p className="px-5 pt-1 pb-4 text-sm text-gray-400 leading-relaxed border-t border-white/5">
                         {faqItem.a}
                       </p>
                     </motion.div>
@@ -1183,10 +1144,7 @@ export default function App() {
       </section>
 
       {/* ── CONTACT ──────────────────────────────────────────────────────── */}
-      <section
-        className="px-4 py-16"
-        style={{ background: "linear-gradient(135deg, #1A2B4A 0%, #0F2040 100%)" }}
-      >
+      <section className="px-4 py-16">
         <div className="max-w-md mx-auto text-center">
           <motion.div
             variants={fadeUp}
@@ -1194,24 +1152,24 @@ export default function App() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
           >
-            <h2 className="text-2xl font-extrabold mb-2 text-white">{c.contact_title}</h2>
-            <p className="text-blue-200 text-sm mb-8">{c.contact_text}</p>
+            <h2 className="text-2xl font-bold mb-2">{c.contact_title}</h2>
+            <p className="text-gray-400 text-sm mb-8">{c.contact_text}</p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a
                 href="https://wa.me/34627345058"
-                className="flex items-center justify-center gap-2 bg-green-500/15 border border-green-400/30 text-green-300 px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-green-500/25 hover:border-green-400/50 transition-all"
+                className="flex items-center justify-center gap-2 bg-green-500/10 border border-green-500/30 text-green-400 px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-green-500/20 hover:border-green-500/60 hover:shadow-[0_0_20px_rgba(34,197,94,0.2)] transition-all"
               >
                 <MessageCircle className="w-4 h-4" /> WhatsApp
               </a>
               <a
                 href="https://t.me/sanya198426"
-                className="flex items-center justify-center gap-2 bg-sky-500/15 border border-sky-400/30 text-sky-300 px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-sky-500/25 hover:border-sky-400/50 transition-all"
+                className="flex items-center justify-center gap-2 bg-sky-500/10 border border-sky-500/30 text-sky-400 px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-sky-500/20 hover:border-sky-500/60 hover:shadow-[0_0_20px_rgba(14,165,233,0.2)] transition-all"
               >
                 <Send className="w-4 h-4" /> Telegram
               </a>
               <a
                 href="mailto:aryaboshkapov@gmail.com"
-                className="flex items-center justify-center gap-2 border border-white/20 text-white/70 px-5 py-2.5 rounded-xl text-sm font-semibold hover:border-white/40 hover:text-white transition-all"
+                className="flex items-center justify-center gap-2 border border-white/10 text-gray-300 px-5 py-2.5 rounded-xl text-sm font-semibold hover:border-white/25 hover:text-white transition-all"
               >
                 <Mail className="w-4 h-4" /> Email
               </a>
@@ -1221,8 +1179,8 @@ export default function App() {
       </section>
 
       {/* ── FOOTER ───────────────────────────────────────────────────────── */}
-      <footer className="px-4 py-6 border-t border-gray-200 text-center bg-white">
-        <p className="text-xs text-gray-400 font-mono">{c.footer_copy}</p>
+      <footer className="px-4 py-6 border-t border-white/8 text-center">
+        <p className="text-xs text-brand-muted font-mono">{c.footer_copy}</p>
       </footer>
 
     </div>
