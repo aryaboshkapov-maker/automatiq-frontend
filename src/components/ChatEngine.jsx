@@ -152,7 +152,7 @@ export default function ChatEngine({ channel = "web", apiBase, theme }) {
                 ))}
               </div>
             )}
-            {msg.suggestions?.length > 0 && (
+            {msg.suggestions?.length > 0 && i === 0 && (
               <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginTop: 4, justifyContent: "flex-start" }}>
                 {msg.suggestions.map((s, j) => (
                   <button key={j} onClick={() => handleSend(s)} style={{
